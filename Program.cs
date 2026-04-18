@@ -12,6 +12,7 @@ namespace LockIn
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Dashboard());
+            Logger.Info("Hello");
         }
     }
 }
