@@ -1,3 +1,5 @@
+
+
 namespace LockIn
 {
     internal static class Program
@@ -13,6 +15,7 @@ namespace LockIn
             ApplicationConfiguration.Initialize();
             Application.Run(new Dashboard());
             Logger.Info("Hello");
+            
         }
     }
 }
