@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             NavBar = new GroupBox();
-            AddButton = new Button();
-            AccountLists = new ListView();
-            button1 = new Button();
             EditBtn = new Button();
+            button1 = new Button();
+            AddButton = new Button();
+            dataGridView1 = new DataGridView();
             NavBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // NavBar
@@ -48,6 +49,24 @@
             NavBar.TabIndex = 0;
             NavBar.TabStop = false;
             // 
+            // EditBtn
+            // 
+            EditBtn.Location = new Point(75, 8);
+            EditBtn.Name = "EditBtn";
+            EditBtn.Size = new Size(64, 29);
+            EditBtn.TabIndex = 2;
+            EditBtn.Text = "Edit";
+            EditBtn.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(145, 8);
+            button1.Name = "button1";
+            button1.Size = new Size(64, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Delete";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // AddButton
             // 
             AddButton.Location = new Point(12, 8);
@@ -58,32 +77,15 @@
             AddButton.UseVisualStyleBackColor = true;
             AddButton.Click += AddButton_Click;
             // 
-            // AccountLists
+            // dataGridView1
             // 
-            AccountLists.Location = new Point(29, 71);
-            AccountLists.Name = "AccountLists";
-            AccountLists.Size = new Size(875, 484);
-            AccountLists.TabIndex = 1;
-            AccountLists.UseCompatibleStateImageBehavior = false;
-            AccountLists.SelectedIndexChanged += listView1_SelectedIndexChanged;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(149, 8);
-            button1.Name = "button1";
-            button1.Size = new Size(64, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Delete";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // EditBtn
-            // 
-            EditBtn.Location = new Point(75, 8);
-            EditBtn.Name = "EditBtn";
-            EditBtn.Size = new Size(64, 29);
-            EditBtn.TabIndex = 2;
-            EditBtn.Text = "Edit";
-            EditBtn.UseVisualStyleBackColor = true;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 67);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(892, 506);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Dashboard
             // 
@@ -91,11 +93,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(916, 585);
-            Controls.Add(AccountLists);
+            Controls.Add(dataGridView1);
             Controls.Add(NavBar);
             Name = "Dashboard";
             Text = "Lock In - Dashboard";
             NavBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -103,8 +106,8 @@
 
         private GroupBox NavBar;
         private Button AddButton;
-        private ListView AccountLists;
         private Button button1;
         private Button EditBtn;
+        private DataGridView dataGridView1;
     }
 }
