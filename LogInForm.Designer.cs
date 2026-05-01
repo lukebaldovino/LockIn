@@ -1,146 +1,196 @@
-﻿namespace LockIn
+namespace LockIn
 {
     partial class LogInForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            label3 = new Label();
+            LockIconLbl = new Label();
+            TitleLbl = new Label();
+            SubtitleLbl = new Label();
+            UsernameLbl = new Label();
+            PasswordLbl = new Label();
+            UsernameField = new TextBox();
+            PasswordField = new TextBox();
             LogInButton = new Button();
-            label4 = new Label();
-            linkLabel1 = new LinkLabel();
+            NoAccountLbl = new Label();
+            RegisterLink = new LinkLabel();
+            CardPanel = new Panel();
+            CardPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // LockIconLbl
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Lucida Sans", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(31, 143);
-            label1.Name = "label1";
-            label1.Size = new Size(395, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Welcome to Lock In";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
+            LockIconLbl.Font = new Font("Segoe UI Emoji", 26F);
+            LockIconLbl.Location = new Point(3, 28);
+            LockIconLbl.Name = "LockIconLbl";
+            LockIconLbl.Size = new Size(354, 48);
+            LockIconLbl.TabIndex = 0;
+            LockIconLbl.Text = "🔒";
+            LockIconLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // TitleLbl
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(88, 257);
-            label2.Name = "label2";
-            label2.Size = new Size(75, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Username";
-            label2.Click += label2_Click;
+            TitleLbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            TitleLbl.ForeColor = Color.White;
+            TitleLbl.Location = new Point(3, 80);
+            TitleLbl.Name = "TitleLbl";
+            TitleLbl.Size = new Size(354, 36);
+            TitleLbl.TabIndex = 1;
+            TitleLbl.Text = "Lock In";
+            TitleLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // SubtitleLbl
             // 
-            textBox1.Location = new Point(196, 250);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(156, 27);
-            textBox1.TabIndex = 2;
+            SubtitleLbl.Font = new Font("Segoe UI", 9F);
+            SubtitleLbl.ForeColor = Color.FromArgb(140, 140, 150);
+            SubtitleLbl.Location = new Point(3, 116);
+            SubtitleLbl.Name = "SubtitleLbl";
+            SubtitleLbl.Size = new Size(354, 24);
+            SubtitleLbl.TabIndex = 2;
+            SubtitleLbl.Text = "Your secure credential vault";
+            SubtitleLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // UsernameLbl
             // 
-            textBox2.Location = new Point(196, 313);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(156, 27);
-            textBox2.TabIndex = 4;
+            UsernameLbl.AutoSize = true;
+            UsernameLbl.ForeColor = Color.FromArgb(170, 170, 180);
+            UsernameLbl.Location = new Point(30, 158);
+            UsernameLbl.Name = "UsernameLbl";
+            UsernameLbl.Size = new Size(71, 19);
+            UsernameLbl.TabIndex = 3;
+            UsernameLbl.Text = "Username";
             // 
-            // label3
+            // PasswordLbl
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(88, 316);
-            label3.Name = "label3";
-            label3.Size = new Size(70, 20);
-            label3.TabIndex = 5;
-            label3.Text = "Password";
-            label3.Click += label3_Click;
+            PasswordLbl.AutoSize = true;
+            PasswordLbl.ForeColor = Color.FromArgb(170, 170, 180);
+            PasswordLbl.Location = new Point(30, 222);
+            PasswordLbl.Name = "PasswordLbl";
+            PasswordLbl.Size = new Size(67, 19);
+            PasswordLbl.TabIndex = 5;
+            PasswordLbl.Text = "Password";
+            // 
+            // UsernameField
+            // 
+            UsernameField.BackColor = Color.FromArgb(50, 50, 58);
+            UsernameField.BorderStyle = BorderStyle.FixedSingle;
+            UsernameField.ForeColor = Color.White;
+            UsernameField.Location = new Point(30, 178);
+            UsernameField.Name = "UsernameField";
+            UsernameField.Size = new Size(300, 25);
+            UsernameField.TabIndex = 4;
+            // 
+            // PasswordField
+            // 
+            PasswordField.BackColor = Color.FromArgb(50, 50, 58);
+            PasswordField.BorderStyle = BorderStyle.FixedSingle;
+            PasswordField.ForeColor = Color.White;
+            PasswordField.Location = new Point(30, 242);
+            PasswordField.Name = "PasswordField";
+            PasswordField.Size = new Size(300, 25);
+            PasswordField.TabIndex = 6;
+            PasswordField.UseSystemPasswordChar = true;
             // 
             // LogInButton
             // 
-            LogInButton.Location = new Point(88, 359);
+            LogInButton.BackColor = Color.FromArgb(58, 130, 246);
+            LogInButton.Cursor = Cursors.Hand;
+            LogInButton.FlatAppearance.BorderSize = 0;
+            LogInButton.FlatStyle = FlatStyle.Flat;
+            LogInButton.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            LogInButton.ForeColor = Color.White;
+            LogInButton.Location = new Point(30, 292);
             LogInButton.Name = "LogInButton";
-            LogInButton.Size = new Size(264, 29);
-            LogInButton.TabIndex = 6;
-            LogInButton.Text = "Login";
-            LogInButton.UseVisualStyleBackColor = true;
+            LogInButton.Size = new Size(300, 36);
+            LogInButton.TabIndex = 7;
+            LogInButton.Text = "Sign In";
+            LogInButton.UseVisualStyleBackColor = false;
+            LogInButton.Click += LogInButton_Click;
             // 
-            // label4
+            // NoAccountLbl
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(88, 407);
-            label4.Name = "label4";
-            label4.Size = new Size(188, 20);
-            label4.TabIndex = 7;
-            label4.Text = "No Account? Register here:";
+            NoAccountLbl.AutoSize = true;
+            NoAccountLbl.ForeColor = Color.FromArgb(140, 140, 150);
+            NoAccountLbl.Location = new Point(94, 343);
+            NoAccountLbl.Name = "NoAccountLbl";
+            NoAccountLbl.Size = new Size(85, 19);
+            NoAccountLbl.TabIndex = 8;
+            NoAccountLbl.Text = "No account?";
             // 
-            // linkLabel1
+            // RegisterLink
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(282, 407);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(99, 20);
-            linkLabel1.TabIndex = 8;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Register Here";
+            RegisterLink.ActiveLinkColor = Color.White;
+            RegisterLink.AutoSize = true;
+            RegisterLink.LinkColor = Color.FromArgb(100, 170, 255);
+            RegisterLink.Location = new Point(176, 343);
+            RegisterLink.Name = "RegisterLink";
+            RegisterLink.Size = new Size(91, 19);
+            RegisterLink.TabIndex = 9;
+            RegisterLink.TabStop = true;
+            RegisterLink.Text = "Register Here";
+            RegisterLink.VisitedLinkColor = Color.FromArgb(100, 170, 255);
+            RegisterLink.Click += RegisterLink_Click;
+            // 
+            // CardPanel
+            // 
+            CardPanel.BackColor = Color.FromArgb(36, 36, 42);
+            CardPanel.Controls.Add(LockIconLbl);
+            CardPanel.Controls.Add(TitleLbl);
+            CardPanel.Controls.Add(SubtitleLbl);
+            CardPanel.Controls.Add(UsernameLbl);
+            CardPanel.Controls.Add(UsernameField);
+            CardPanel.Controls.Add(PasswordLbl);
+            CardPanel.Controls.Add(PasswordField);
+            CardPanel.Controls.Add(LogInButton);
+            CardPanel.Controls.Add(NoAccountLbl);
+            CardPanel.Controls.Add(RegisterLink);
+            CardPanel.Location = new Point(30, 40);
+            CardPanel.Name = "CardPanel";
+            CardPanel.Size = new Size(360, 390);
+            CardPanel.TabIndex = 0;
             // 
             // LogInForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(488, 521);
-            Controls.Add(linkLabel1);
-            Controls.Add(label4);
-            Controls.Add(LogInButton);
-            Controls.Add(label3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            BackColor = Color.FromArgb(22, 22, 26);
+            ClientSize = new Size(420, 480);
+            Controls.Add(CardPanel);
+            Font = new Font("Segoe UI", 10F);
+            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "LogInForm";
-            Text = "LogInForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Lock In — Sign In";
+            CardPanel.ResumeLayout(false);
+            CardPanel.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label3;
-        private Button LogInButton;
-        private Label label4;
-        private LinkLabel linkLabel1;
+        private Panel     CardPanel;
+        private Label     LockIconLbl;
+        private Label     TitleLbl;
+        private Label     SubtitleLbl;
+        private Label     UsernameLbl;
+        private Label     PasswordLbl;
+        private TextBox   UsernameField;
+        private TextBox   PasswordField;
+        private Button    LogInButton;
+        private Label     NoAccountLbl;
+        private LinkLabel RegisterLink;
     }
 }

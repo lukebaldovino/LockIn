@@ -2,141 +2,226 @@
 {
     partial class AddAccForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            TitleLbl = new Label();
             AccTypeLbl = new Label();
             UsernameLbl = new Label();
             PasswordLbl = new Label();
+            AutoGenLbl = new Label();
+            AccTypeCmBx = new ComboBox();
             UsernameField = new TextBox();
             PasswordField = new TextBox();
-            AccTypeCmBx = new ComboBox();
+            AutoGenBtn = new Button();
             ConfirmBtn = new Button();
             CancelBtn = new Button();
+            MainPanel = new Panel();
+            SeparatorPanel = new Panel();
+            MainPanel.SuspendLayout();
             SuspendLayout();
+            // 
+            // TitleLbl
+            // 
+            TitleLbl.AutoSize = true;
+            TitleLbl.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            TitleLbl.ForeColor = Color.White;
+            TitleLbl.Location = new Point(24, 20);
+            TitleLbl.Name = "TitleLbl";
+            TitleLbl.Size = new Size(166, 25);
+            TitleLbl.TabIndex = 0;
+            TitleLbl.Text = "Add New Account";
             // 
             // AccTypeLbl
             // 
             AccTypeLbl.AutoSize = true;
-            AccTypeLbl.Location = new Point(12, 21);
+            AccTypeLbl.ForeColor = Color.FromArgb(180, 180, 185);
+            AccTypeLbl.Location = new Point(24, 73);
             AccTypeLbl.Name = "AccTypeLbl";
-            AccTypeLbl.Size = new Size(98, 20);
-            AccTypeLbl.TabIndex = 0;
+            AccTypeLbl.Size = new Size(91, 19);
+            AccTypeLbl.TabIndex = 2;
             AccTypeLbl.Text = "Account Type";
-            AccTypeLbl.Click += label1_Click;
             // 
             // UsernameLbl
             // 
             UsernameLbl.AutoSize = true;
-            UsernameLbl.Location = new Point(17, 57);
+            UsernameLbl.ForeColor = Color.FromArgb(180, 180, 185);
+            UsernameLbl.Location = new Point(24, 110);
             UsernameLbl.Name = "UsernameLbl";
-            UsernameLbl.Size = new Size(75, 20);
-            UsernameLbl.TabIndex = 1;
+            UsernameLbl.Size = new Size(71, 19);
+            UsernameLbl.TabIndex = 4;
             UsernameLbl.Text = "Username";
             // 
             // PasswordLbl
             // 
             PasswordLbl.AutoSize = true;
-            PasswordLbl.Location = new Point(17, 100);
+            PasswordLbl.ForeColor = Color.FromArgb(180, 180, 185);
+            PasswordLbl.Location = new Point(24, 144);
             PasswordLbl.Name = "PasswordLbl";
-            PasswordLbl.Size = new Size(70, 20);
-            PasswordLbl.TabIndex = 2;
+            PasswordLbl.Size = new Size(67, 19);
+            PasswordLbl.TabIndex = 6;
             PasswordLbl.Text = "Password";
             // 
-            // UsernameField
+            // AutoGenLbl
             // 
-            UsernameField.Location = new Point(124, 54);
-            UsernameField.Name = "UsernameField";
-            UsernameField.Size = new Size(157, 27);
-            UsernameField.TabIndex = 3;
-            UsernameField.TextChanged += UsernameField_TextChanged;
-            // 
-            // PasswordField
-            // 
-            PasswordField.Location = new Point(124, 97);
-            PasswordField.Name = "PasswordField";
-            PasswordField.Size = new Size(157, 27);
-            PasswordField.TabIndex = 4;
-            PasswordField.TextChanged += textBox1_TextChanged;
+            AutoGenLbl.AutoSize = true;
+            AutoGenLbl.ForeColor = Color.FromArgb(180, 180, 185);
+            AutoGenLbl.Location = new Point(24, 180);
+            AutoGenLbl.Name = "AutoGenLbl";
+            AutoGenLbl.Size = new Size(99, 19);
+            AutoGenLbl.TabIndex = 8;
+            AutoGenLbl.Text = "Auto-generate";
             // 
             // AccTypeCmBx
             // 
-            AccTypeCmBx.FormattingEnabled = true;
-            AccTypeCmBx.Location = new Point(124, 18);
+            AccTypeCmBx.BackColor = Color.FromArgb(50, 50, 55);
+            AccTypeCmBx.DropDownStyle = ComboBoxStyle.DropDownList;
+            AccTypeCmBx.FlatStyle = FlatStyle.Flat;
+            AccTypeCmBx.ForeColor = Color.White;
+            AccTypeCmBx.Items.AddRange(new object[] { "Personal", "Work", "Finance", "Social", "Other" });
+            AccTypeCmBx.Location = new Point(129, 73);
             AccTypeCmBx.Name = "AccTypeCmBx";
-            AccTypeCmBx.Size = new Size(157, 28);
-            AccTypeCmBx.TabIndex = 5;
+            AccTypeCmBx.Size = new Size(266, 25);
+            AccTypeCmBx.TabIndex = 3;
+            // 
+            // UsernameField
+            // 
+            UsernameField.BackColor = Color.FromArgb(50, 50, 55);
+            UsernameField.BorderStyle = BorderStyle.FixedSingle;
+            UsernameField.ForeColor = Color.White;
+            UsernameField.Location = new Point(129, 108);
+            UsernameField.Name = "UsernameField";
+            UsernameField.Size = new Size(266, 25);
+            UsernameField.TabIndex = 5;
+            // 
+            // PasswordField
+            // 
+            PasswordField.BackColor = Color.FromArgb(50, 50, 55);
+            PasswordField.BorderStyle = BorderStyle.FixedSingle;
+            PasswordField.ForeColor = Color.White;
+            PasswordField.Location = new Point(129, 144);
+            PasswordField.Name = "PasswordField";
+            PasswordField.Size = new Size(266, 25);
+            PasswordField.TabIndex = 7;
+            PasswordField.UseSystemPasswordChar = true;
+            // 
+            // AutoGenBtn
+            // 
+            AutoGenBtn.BackColor = Color.FromArgb(55, 55, 60);
+            AutoGenBtn.Cursor = Cursors.Hand;
+            AutoGenBtn.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 85);
+            AutoGenBtn.FlatStyle = FlatStyle.Flat;
+            AutoGenBtn.ForeColor = Color.FromArgb(220, 220, 220);
+            AutoGenBtn.Location = new Point(129, 180);
+            AutoGenBtn.Name = "AutoGenBtn";
+            AutoGenBtn.Size = new Size(266, 30);
+            AutoGenBtn.TabIndex = 9;
+            AutoGenBtn.Text = "⚡ Generate Strong Password";
+            AutoGenBtn.UseVisualStyleBackColor = false;
+            AutoGenBtn.Click += AutoGenBtn_Click;
             // 
             // ConfirmBtn
             // 
-            ConfirmBtn.Location = new Point(281, 138);
+            ConfirmBtn.BackColor = Color.FromArgb(40, 167, 90);
+            ConfirmBtn.Cursor = Cursors.Hand;
+            ConfirmBtn.FlatAppearance.BorderSize = 0;
+            ConfirmBtn.FlatStyle = FlatStyle.Flat;
+            ConfirmBtn.ForeColor = Color.White;
+            ConfirmBtn.Location = new Point(333, 293);
             ConfirmBtn.Name = "ConfirmBtn";
-            ConfirmBtn.Size = new Size(94, 29);
-            ConfirmBtn.TabIndex = 6;
-            ConfirmBtn.Text = "Confirm";
-            ConfirmBtn.UseVisualStyleBackColor = true;
+            ConfirmBtn.Size = new Size(95, 34);
+            ConfirmBtn.TabIndex = 11;
+            ConfirmBtn.Text = "✔  Confirm";
+            ConfirmBtn.UseVisualStyleBackColor = false;
             ConfirmBtn.Click += ConfirmBtn_Click;
             // 
             // CancelBtn
             // 
-            CancelBtn.Location = new Point(181, 138);
+            CancelBtn.BackColor = Color.FromArgb(55, 55, 60);
+            CancelBtn.Cursor = Cursors.Hand;
+            CancelBtn.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 85);
+            CancelBtn.FlatStyle = FlatStyle.Flat;
+            CancelBtn.ForeColor = Color.FromArgb(200, 200, 205);
+            CancelBtn.Location = new Point(232, 293);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(94, 29);
-            CancelBtn.TabIndex = 7;
-            CancelBtn.Text = "Cancel";
-            CancelBtn.UseVisualStyleBackColor = true;
-            CancelBtn.Click += button1_Click;
+            CancelBtn.Size = new Size(95, 34);
+            CancelBtn.TabIndex = 10;
+            CancelBtn.Text = "✕  Cancel";
+            CancelBtn.UseVisualStyleBackColor = false;
+            CancelBtn.Click += CancelBtn_Click;
+            // 
+            // MainPanel
+            // 
+            MainPanel.BackColor = Color.FromArgb(36, 36, 40);
+            MainPanel.Controls.Add(TitleLbl);
+            MainPanel.Controls.Add(SeparatorPanel);
+            MainPanel.Controls.Add(AccTypeLbl);
+            MainPanel.Controls.Add(AccTypeCmBx);
+            MainPanel.Controls.Add(UsernameLbl);
+            MainPanel.Controls.Add(UsernameField);
+            MainPanel.Controls.Add(PasswordLbl);
+            MainPanel.Controls.Add(PasswordField);
+            MainPanel.Controls.Add(AutoGenLbl);
+            MainPanel.Controls.Add(AutoGenBtn);
+            MainPanel.Controls.Add(CancelBtn);
+            MainPanel.Controls.Add(ConfirmBtn);
+            MainPanel.Location = new Point(20, 20);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Padding = new Padding(24);
+            MainPanel.Size = new Size(440, 340);
+            MainPanel.TabIndex = 0;
+            // 
+            // SeparatorPanel
+            // 
+            SeparatorPanel.BackColor = Color.FromArgb(60, 60, 65);
+            SeparatorPanel.Location = new Point(24, 52);
+            SeparatorPanel.Name = "SeparatorPanel";
+            SeparatorPanel.Size = new Size(392, 1);
+            SeparatorPanel.TabIndex = 1;
             // 
             // AddAccForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(387, 179);
-            Controls.Add(CancelBtn);
-            Controls.Add(ConfirmBtn);
-            Controls.Add(AccTypeCmBx);
-            Controls.Add(PasswordField);
-            Controls.Add(UsernameField);
-            Controls.Add(PasswordLbl);
-            Controls.Add(UsernameLbl);
-            Controls.Add(AccTypeLbl);
+            BackColor = Color.FromArgb(28, 28, 30);
+            ClientSize = new Size(480, 380);
+            Controls.Add(MainPanel);
+            Font = new Font("Segoe UI", 10F);
+            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AddAccForm";
-            Text = "Add Account";
+            Padding = new Padding(20);
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Lock In — Add Account";
+            MainPanel.ResumeLayout(false);
+            MainPanel.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
+        private Label TitleLbl;
+        private Panel MainPanel;
+        private Panel SeparatorPanel;
         private Label AccTypeLbl;
         private Label UsernameLbl;
         private Label PasswordLbl;
+        private Label AutoGenLbl;
+        private ComboBox AccTypeCmBx;
         private TextBox UsernameField;
         private TextBox PasswordField;
-        private ComboBox AccTypeCmBx;
+        private Button AutoGenBtn;
         private Button ConfirmBtn;
         private Button CancelBtn;
     }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LockIn
@@ -15,29 +10,19 @@ namespace LockIn
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void AutoGenBtn_Click(object sender, EventArgs e)
         {
-
+            // TODO: Generate strong password and populate PasswordField
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void UsernameField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            
+            // TODO: Validate and save account
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System;
 using System.Windows.Forms;
 
 namespace LockIn
@@ -15,19 +10,14 @@ namespace LockIn
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void LogInButton_Click(object sender, EventArgs e)
         {
-
+            // TODO: Validate credentials and open main form
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void RegisterLink_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            // TODO: Open registration form
         }
     }
 }

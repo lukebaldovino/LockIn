@@ -2,112 +2,309 @@
 {
     partial class Dashboard
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            NavBar = new GroupBox();
-            EditBtn = new Button();
-            button1 = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            NavBar = new Panel();
+            BrandPanel = new Panel();
+            LockIconLabel = new Label();
+            BrandLabel = new Label();
+            ActionPanel = new Panel();
+            DeleteBtn = new Button();
             AddButton = new Button();
+            EditBtn = new Button();
+            SearchPanel = new Panel();
+            SearchIconLabel = new Label();
+            SearchBox = new TextBox();
             dataGridView1 = new DataGridView();
+            StatusPanel = new Panel();
+            StatusDot = new Label();
+            StatusLabel = new Label();
             NavBar.SuspendLayout();
+            BrandPanel.SuspendLayout();
+            ActionPanel.SuspendLayout();
+            SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            StatusPanel.SuspendLayout();
             SuspendLayout();
             // 
             // NavBar
             // 
-            NavBar.BackColor = Color.MidnightBlue;
-            NavBar.Controls.Add(EditBtn);
-            NavBar.Controls.Add(button1);
-            NavBar.Controls.Add(AddButton);
+            NavBar.BackColor = Color.FromArgb(22, 25, 33);
+            NavBar.Controls.Add(BrandPanel);
+            NavBar.Controls.Add(ActionPanel);
+            NavBar.Dock = DockStyle.Top;
             NavBar.Location = new Point(0, 0);
+            NavBar.Margin = new Padding(3, 2, 3, 2);
             NavBar.Name = "NavBar";
-            NavBar.Size = new Size(919, 43);
-            NavBar.TabIndex = 0;
-            NavBar.TabStop = false;
+            NavBar.Padding = new Padding(14, 0, 14, 0);
+            NavBar.Size = new Size(840, 39);
+            NavBar.TabIndex = 3;
             // 
-            // EditBtn
+            // BrandPanel
             // 
-            EditBtn.Location = new Point(75, 8);
-            EditBtn.Name = "EditBtn";
-            EditBtn.Size = new Size(64, 29);
-            EditBtn.TabIndex = 2;
-            EditBtn.Text = "Edit";
-            EditBtn.UseVisualStyleBackColor = true;
+            BrandPanel.BackColor = Color.Transparent;
+            BrandPanel.Controls.Add(LockIconLabel);
+            BrandPanel.Controls.Add(BrandLabel);
+            BrandPanel.Dock = DockStyle.Left;
+            BrandPanel.Location = new Point(14, 0);
+            BrandPanel.Margin = new Padding(3, 2, 3, 2);
+            BrandPanel.Name = "BrandPanel";
+            BrandPanel.Size = new Size(123, 39);
+            BrandPanel.TabIndex = 0;
             // 
-            // button1
+            // LockIconLabel
             // 
-            button1.Location = new Point(145, 8);
-            button1.Name = "button1";
-            button1.Size = new Size(64, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Delete";
-            button1.UseVisualStyleBackColor = true;
+            LockIconLabel.AutoSize = true;
+            LockIconLabel.Font = new Font("Segoe UI Emoji", 16F);
+            LockIconLabel.ForeColor = Color.FromArgb(226, 232, 240);
+            LockIconLabel.Location = new Point(0, 5);
+            LockIconLabel.Name = "LockIconLabel";
+            LockIconLabel.Size = new Size(39, 30);
+            LockIconLabel.TabIndex = 0;
+            LockIconLabel.Text = "🔒";
+            // 
+            // BrandLabel
+            // 
+            BrandLabel.AutoSize = true;
+            BrandLabel.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            BrandLabel.ForeColor = Color.FromArgb(226, 232, 240);
+            BrandLabel.Location = new Point(39, 8);
+            BrandLabel.Name = "BrandLabel";
+            BrandLabel.Size = new Size(77, 25);
+            BrandLabel.TabIndex = 1;
+            BrandLabel.Text = "Lock In";
+            BrandLabel.Click += BrandLabel_Click;
+            // 
+            // ActionPanel
+            // 
+            ActionPanel.BackColor = Color.Transparent;
+            ActionPanel.Controls.Add(DeleteBtn);
+            ActionPanel.Controls.Add(AddButton);
+            ActionPanel.Controls.Add(EditBtn);
+            ActionPanel.Dock = DockStyle.Right;
+            ActionPanel.Location = new Point(546, 0);
+            ActionPanel.Margin = new Padding(3, 2, 3, 2);
+            ActionPanel.Name = "ActionPanel";
+            ActionPanel.Size = new Size(280, 39);
+            ActionPanel.TabIndex = 1;
+            // 
+            // DeleteBtn
+            // 
+            DeleteBtn.BackColor = Color.FromArgb(220, 38, 38);
+            DeleteBtn.Cursor = Cursors.Hand;
+            DeleteBtn.FlatAppearance.BorderSize = 0;
+            DeleteBtn.FlatStyle = FlatStyle.Flat;
+            DeleteBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            DeleteBtn.ForeColor = Color.White;
+            DeleteBtn.Location = new Point(14, 8);
+            DeleteBtn.Margin = new Padding(3, 2, 3, 2);
+            DeleteBtn.Name = "DeleteBtn";
+            DeleteBtn.Size = new Size(70, 23);
+            DeleteBtn.TabIndex = 0;
+            DeleteBtn.Text = "Delete";
+            DeleteBtn.UseVisualStyleBackColor = false;
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(12, 8);
+            AddButton.BackColor = Color.FromArgb(22, 163, 74);
+            AddButton.Cursor = Cursors.Hand;
+            AddButton.FlatAppearance.BorderSize = 0;
+            AddButton.FlatStyle = FlatStyle.Flat;
+            AddButton.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            AddButton.ForeColor = Color.White;
+            AddButton.Location = new Point(98, 8);
+            AddButton.Margin = new Padding(3, 2, 3, 2);
             AddButton.Name = "AddButton";
-            AddButton.Size = new Size(57, 29);
-            AddButton.TabIndex = 0;
-            AddButton.Text = "Add";
-            AddButton.UseVisualStyleBackColor = true;
+            AddButton.Size = new Size(70, 23);
+            AddButton.TabIndex = 1;
+            AddButton.Text = "+ Add";
+            AddButton.UseVisualStyleBackColor = false;
             AddButton.Click += AddButton_Click;
+            // 
+            // EditBtn
+            // 
+            EditBtn.BackColor = Color.FromArgb(37, 99, 235);
+            EditBtn.Cursor = Cursors.Hand;
+            EditBtn.FlatAppearance.BorderSize = 0;
+            EditBtn.FlatStyle = FlatStyle.Flat;
+            EditBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            EditBtn.ForeColor = Color.White;
+            EditBtn.Location = new Point(182, 8);
+            EditBtn.Margin = new Padding(3, 2, 3, 2);
+            EditBtn.Name = "EditBtn";
+            EditBtn.Size = new Size(70, 23);
+            EditBtn.TabIndex = 2;
+            EditBtn.Text = "Edit";
+            EditBtn.UseVisualStyleBackColor = false;
+            // 
+            // SearchPanel
+            // 
+            SearchPanel.BackColor = Color.FromArgb(15, 17, 23);
+            SearchPanel.Controls.Add(SearchIconLabel);
+            SearchPanel.Controls.Add(SearchBox);
+            SearchPanel.Dock = DockStyle.Top;
+            SearchPanel.Location = new Point(0, 39);
+            SearchPanel.Margin = new Padding(3, 2, 3, 2);
+            SearchPanel.Name = "SearchPanel";
+            SearchPanel.Padding = new Padding(14, 6, 14, 6);
+            SearchPanel.Size = new Size(840, 43);
+            SearchPanel.TabIndex = 2;
+            // 
+            // SearchIconLabel
+            // 
+            SearchIconLabel.AutoSize = true;
+            SearchIconLabel.Font = new Font("Segoe UI", 10F);
+            SearchIconLabel.ForeColor = Color.FromArgb(75, 85, 99);
+            SearchIconLabel.Location = new Point(6, 8);
+            SearchIconLabel.Name = "SearchIconLabel";
+            SearchIconLabel.Size = new Size(28, 19);
+            SearchIconLabel.TabIndex = 0;
+            SearchIconLabel.Text = "🔍";
+            // 
+            // SearchBox
+            // 
+            SearchBox.BackColor = Color.FromArgb(10, 12, 18);
+            SearchBox.BorderStyle = BorderStyle.None;
+            SearchBox.Font = new Font("Consolas", 10F);
+            SearchBox.ForeColor = Color.FromArgb(156, 163, 175);
+            SearchBox.Location = new Point(40, 11);
+            SearchBox.Margin = new Padding(3, 2, 3, 2);
+            SearchBox.Name = "SearchBox";
+            SearchBox.PlaceholderText = "Search accounts...";
+            SearchBox.Size = new Size(778, 16);
+            SearchBox.TabIndex = 1;
+            SearchBox.TextChanged += SearchBox_TextChanged;
             // 
             // dataGridView1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 67);
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.FromArgb(15, 17, 23);
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(15, 17, 23);
+            dataGridViewCellStyle1.Font = new Font("Consolas", 8F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(75, 85, 99);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(15, 17, 23);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(75, 85, 99);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeight = 40;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(15, 17, 23);
+            dataGridViewCellStyle2.Font = new Font("Consolas", 10F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(156, 163, 175);
+            dataGridViewCellStyle2.Padding = new Padding(4, 6, 4, 6);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(22, 25, 33);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(209, 213, 219);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.FromArgb(30, 33, 48);
+            dataGridView1.Location = new Point(0, 82);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(892, 506);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowTemplate.Height = 42;
+            dataGridView1.ScrollBars = ScrollBars.Vertical;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(840, 359);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // StatusPanel
+            // 
+            StatusPanel.BackColor = Color.FromArgb(15, 17, 23);
+            StatusPanel.Controls.Add(StatusDot);
+            StatusPanel.Controls.Add(StatusLabel);
+            StatusPanel.Dock = DockStyle.Bottom;
+            StatusPanel.Location = new Point(0, 441);
+            StatusPanel.Margin = new Padding(3, 2, 3, 2);
+            StatusPanel.Name = "StatusPanel";
+            StatusPanel.Size = new Size(840, 24);
+            StatusPanel.TabIndex = 4;
+            // 
+            // StatusDot
+            // 
+            StatusDot.BackColor = Color.FromArgb(22, 163, 74);
+            StatusDot.Location = new Point(13, 10);
+            StatusDot.Name = "StatusDot";
+            StatusDot.Size = new Size(7, 6);
+            StatusDot.TabIndex = 0;
+            // 
+            // StatusLabel
+            // 
+            StatusLabel.AutoSize = true;
+            StatusLabel.Font = new Font("Consolas", 9F);
+            StatusLabel.ForeColor = Color.FromArgb(75, 85, 99);
+            StatusLabel.Location = new Point(23, 6);
+            StatusLabel.Name = "StatusLabel";
+            StatusLabel.Size = new Size(196, 14);
+            StatusLabel.TabIndex = 1;
+            StatusLabel.Text = "Ready  •  0 accounts stored";
+            // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(916, 585);
+            BackColor = Color.FromArgb(15, 17, 23);
+            ClientSize = new Size(840, 465);
             Controls.Add(dataGridView1);
+            Controls.Add(SearchPanel);
             Controls.Add(NavBar);
+            Controls.Add(StatusPanel);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(702, 385);
             Name = "Dashboard";
-            Text = "Lock In - Dashboard";
+            Text = "Lock In — Dashboard";
             NavBar.ResumeLayout(false);
+            BrandPanel.ResumeLayout(false);
+            BrandPanel.PerformLayout();
+            ActionPanel.ResumeLayout(false);
+            SearchPanel.ResumeLayout(false);
+            SearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            StatusPanel.ResumeLayout(false);
+            StatusPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox NavBar;
+        private Panel NavBar;
+        private Panel BrandPanel;
+        private Label LockIconLabel;
+        private Label BrandLabel;
+        private Panel ActionPanel;
+        private Button DeleteBtn;
         private Button AddButton;
-        private Button button1;
         private Button EditBtn;
+        private Panel SearchPanel;
+        private Label SearchIconLabel;
+        private TextBox SearchBox;
         private DataGridView dataGridView1;
+        private Panel StatusPanel;
+        private Label StatusDot;
+        private Label StatusLabel;
     }
 }
