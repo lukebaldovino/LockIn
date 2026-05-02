@@ -69,7 +69,7 @@
             UsernameLbl.ForeColor = Color.FromArgb(156, 163, 175);
             UsernameLbl.Location = new Point(30, 148);
             UsernameLbl.Name = "UsernameLbl";
-            UsernameLbl.Size = new Size(71, 19);
+            UsernameLbl.Size = new Size(87, 23);
             UsernameLbl.TabIndex = 3;
             UsernameLbl.Text = "Username";
             // 
@@ -79,7 +79,7 @@
             PasswordLbl.ForeColor = Color.FromArgb(156, 163, 175);
             PasswordLbl.Location = new Point(30, 214);
             PasswordLbl.Name = "PasswordLbl";
-            PasswordLbl.Size = new Size(67, 19);
+            PasswordLbl.Size = new Size(80, 23);
             PasswordLbl.TabIndex = 5;
             PasswordLbl.Text = "Password";
             // 
@@ -89,7 +89,7 @@
             ConfirmPasswordLbl.ForeColor = Color.FromArgb(156, 163, 175);
             ConfirmPasswordLbl.Location = new Point(30, 280);
             ConfirmPasswordLbl.Name = "ConfirmPasswordLbl";
-            ConfirmPasswordLbl.Size = new Size(120, 19);
+            ConfirmPasswordLbl.Size = new Size(146, 23);
             ConfirmPasswordLbl.TabIndex = 7;
             ConfirmPasswordLbl.Text = "Confirm Password";
             // 
@@ -101,7 +101,7 @@
             UsernameField.ForeColor = Color.FromArgb(209, 213, 219);
             UsernameField.Location = new Point(30, 168);
             UsernameField.Name = "UsernameField";
-            UsernameField.Size = new Size(300, 16);
+            UsernameField.Size = new Size(300, 20);
             UsernameField.TabIndex = 4;
             UsernameField.TextChanged += UsernameField_TextChanged;
             // 
@@ -113,7 +113,7 @@
             PasswordField.ForeColor = Color.FromArgb(209, 213, 219);
             PasswordField.Location = new Point(30, 234);
             PasswordField.Name = "PasswordField";
-            PasswordField.Size = new Size(300, 16);
+            PasswordField.Size = new Size(300, 20);
             PasswordField.TabIndex = 6;
             PasswordField.UseSystemPasswordChar = true;
             // 
@@ -125,7 +125,7 @@
             ConfirmPasswordField.ForeColor = Color.FromArgb(209, 213, 219);
             ConfirmPasswordField.Location = new Point(30, 300);
             ConfirmPasswordField.Name = "ConfirmPasswordField";
-            ConfirmPasswordField.Size = new Size(300, 16);
+            ConfirmPasswordField.Size = new Size(300, 20);
             ConfirmPasswordField.TabIndex = 8;
             ConfirmPasswordField.UseSystemPasswordChar = true;
             // 
@@ -151,7 +151,7 @@
             AlreadyHaveLbl.ForeColor = Color.FromArgb(156, 163, 175);
             AlreadyHaveLbl.Location = new Point(62, 402);
             AlreadyHaveLbl.Name = "AlreadyHaveLbl";
-            AlreadyHaveLbl.Size = new Size(165, 19);
+            AlreadyHaveLbl.Size = new Size(206, 23);
             AlreadyHaveLbl.TabIndex = 10;
             AlreadyHaveLbl.Text = "Already have an account?";
             // 
@@ -162,7 +162,7 @@
             SignInLink.LinkColor = Color.FromArgb(96, 165, 250);
             SignInLink.Location = new Point(233, 402);
             SignInLink.Name = "SignInLink";
-            SignInLink.Size = new Size(51, 19);
+            SignInLink.Size = new Size(63, 23);
             SignInLink.TabIndex = 11;
             SignInLink.TabStop = true;
             SignInLink.Text = "Sign In";
@@ -189,10 +189,11 @@
             CardPanel.Name = "CardPanel";
             CardPanel.Size = new Size(360, 432);
             CardPanel.TabIndex = 0;
+            CardPanel.Paint += CardPanel_Paint;
             // 
             // RegisterForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 17, 23);
             ClientSize = new Size(420, 520);
@@ -204,6 +205,7 @@
             Name = "RegisterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lock In — Register";
+            Load += RegisterForm_Load;
             CardPanel.ResumeLayout(false);
             CardPanel.PerformLayout();
             ResumeLayout(false);

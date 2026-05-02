@@ -32,6 +32,7 @@
             StatusPanel = new Panel();
             StatusDot = new Label();
             StatusLabel = new Label();
+            NgtMdTglBtn = new Button();
             NavBar.SuspendLayout();
             BrandPanel.SuspendLayout();
             ActionPanel.SuspendLayout();
@@ -47,10 +48,9 @@
             NavBar.Controls.Add(ActionPanel);
             NavBar.Dock = DockStyle.Top;
             NavBar.Location = new Point(0, 0);
-            NavBar.Margin = new Padding(3, 2, 3, 2);
             NavBar.Name = "NavBar";
-            NavBar.Padding = new Padding(14, 0, 14, 0);
-            NavBar.Size = new Size(840, 39);
+            NavBar.Padding = new Padding(16, 0, 16, 0);
+            NavBar.Size = new Size(960, 52);
             NavBar.TabIndex = 3;
             // 
             // BrandPanel
@@ -59,10 +59,9 @@
             BrandPanel.Controls.Add(LockIconLabel);
             BrandPanel.Controls.Add(BrandLabel);
             BrandPanel.Dock = DockStyle.Left;
-            BrandPanel.Location = new Point(14, 0);
-            BrandPanel.Margin = new Padding(3, 2, 3, 2);
+            BrandPanel.Location = new Point(16, 0);
             BrandPanel.Name = "BrandPanel";
-            BrandPanel.Size = new Size(123, 39);
+            BrandPanel.Size = new Size(141, 52);
             BrandPanel.TabIndex = 0;
             // 
             // LockIconLabel
@@ -70,9 +69,9 @@
             LockIconLabel.AutoSize = true;
             LockIconLabel.Font = new Font("Segoe UI Emoji", 16F);
             LockIconLabel.ForeColor = Color.FromArgb(226, 232, 240);
-            LockIconLabel.Location = new Point(0, 5);
+            LockIconLabel.Location = new Point(0, 7);
             LockIconLabel.Name = "LockIconLabel";
-            LockIconLabel.Size = new Size(39, 30);
+            LockIconLabel.Size = new Size(52, 36);
             LockIconLabel.TabIndex = 0;
             LockIconLabel.Text = "🔒";
             // 
@@ -81,9 +80,9 @@
             BrandLabel.AutoSize = true;
             BrandLabel.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             BrandLabel.ForeColor = Color.FromArgb(226, 232, 240);
-            BrandLabel.Location = new Point(39, 8);
+            BrandLabel.Location = new Point(45, 11);
             BrandLabel.Name = "BrandLabel";
-            BrandLabel.Size = new Size(77, 25);
+            BrandLabel.Size = new Size(96, 32);
             BrandLabel.TabIndex = 1;
             BrandLabel.Text = "Lock In";
             BrandLabel.Click += BrandLabel_Click;
@@ -91,14 +90,14 @@
             // ActionPanel
             // 
             ActionPanel.BackColor = Color.Transparent;
+            ActionPanel.Controls.Add(NgtMdTglBtn);
             ActionPanel.Controls.Add(DeleteBtn);
             ActionPanel.Controls.Add(AddButton);
             ActionPanel.Controls.Add(EditBtn);
             ActionPanel.Dock = DockStyle.Right;
-            ActionPanel.Location = new Point(546, 0);
-            ActionPanel.Margin = new Padding(3, 2, 3, 2);
+            ActionPanel.Location = new Point(573, 0);
             ActionPanel.Name = "ActionPanel";
-            ActionPanel.Size = new Size(280, 39);
+            ActionPanel.Size = new Size(371, 52);
             ActionPanel.TabIndex = 1;
             // 
             // DeleteBtn
@@ -109,10 +108,9 @@
             DeleteBtn.FlatStyle = FlatStyle.Flat;
             DeleteBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
             DeleteBtn.ForeColor = Color.White;
-            DeleteBtn.Location = new Point(14, 8);
-            DeleteBtn.Margin = new Padding(3, 2, 3, 2);
+            DeleteBtn.Location = new Point(16, 11);
             DeleteBtn.Name = "DeleteBtn";
-            DeleteBtn.Size = new Size(70, 23);
+            DeleteBtn.Size = new Size(80, 31);
             DeleteBtn.TabIndex = 0;
             DeleteBtn.Text = "Delete";
             DeleteBtn.UseVisualStyleBackColor = false;
@@ -125,10 +123,9 @@
             AddButton.FlatStyle = FlatStyle.Flat;
             AddButton.Font = new Font("Consolas", 9F, FontStyle.Bold);
             AddButton.ForeColor = Color.White;
-            AddButton.Location = new Point(98, 8);
-            AddButton.Margin = new Padding(3, 2, 3, 2);
+            AddButton.Location = new Point(112, 11);
             AddButton.Name = "AddButton";
-            AddButton.Size = new Size(70, 23);
+            AddButton.Size = new Size(80, 31);
             AddButton.TabIndex = 1;
             AddButton.Text = "+ Add";
             AddButton.UseVisualStyleBackColor = false;
@@ -142,10 +139,9 @@
             EditBtn.FlatStyle = FlatStyle.Flat;
             EditBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
             EditBtn.ForeColor = Color.White;
-            EditBtn.Location = new Point(182, 8);
-            EditBtn.Margin = new Padding(3, 2, 3, 2);
+            EditBtn.Location = new Point(208, 11);
             EditBtn.Name = "EditBtn";
-            EditBtn.Size = new Size(70, 23);
+            EditBtn.Size = new Size(80, 31);
             EditBtn.TabIndex = 2;
             EditBtn.Text = "Edit";
             EditBtn.UseVisualStyleBackColor = false;
@@ -156,11 +152,10 @@
             SearchPanel.Controls.Add(SearchIconLabel);
             SearchPanel.Controls.Add(SearchBox);
             SearchPanel.Dock = DockStyle.Top;
-            SearchPanel.Location = new Point(0, 39);
-            SearchPanel.Margin = new Padding(3, 2, 3, 2);
+            SearchPanel.Location = new Point(0, 52);
             SearchPanel.Name = "SearchPanel";
-            SearchPanel.Padding = new Padding(14, 6, 14, 6);
-            SearchPanel.Size = new Size(840, 43);
+            SearchPanel.Padding = new Padding(16, 8, 16, 8);
+            SearchPanel.Size = new Size(960, 57);
             SearchPanel.TabIndex = 2;
             // 
             // SearchIconLabel
@@ -168,9 +163,9 @@
             SearchIconLabel.AutoSize = true;
             SearchIconLabel.Font = new Font("Segoe UI", 10F);
             SearchIconLabel.ForeColor = Color.FromArgb(75, 85, 99);
-            SearchIconLabel.Location = new Point(6, 8);
+            SearchIconLabel.Location = new Point(7, 11);
             SearchIconLabel.Name = "SearchIconLabel";
-            SearchIconLabel.Size = new Size(28, 19);
+            SearchIconLabel.Size = new Size(33, 23);
             SearchIconLabel.TabIndex = 0;
             SearchIconLabel.Text = "🔍";
             // 
@@ -180,11 +175,10 @@
             SearchBox.BorderStyle = BorderStyle.None;
             SearchBox.Font = new Font("Consolas", 10F);
             SearchBox.ForeColor = Color.FromArgb(156, 163, 175);
-            SearchBox.Location = new Point(40, 11);
-            SearchBox.Margin = new Padding(3, 2, 3, 2);
+            SearchBox.Location = new Point(46, 15);
             SearchBox.Name = "SearchBox";
             SearchBox.PlaceholderText = "Search accounts...";
-            SearchBox.Size = new Size(778, 16);
+            SearchBox.Size = new Size(889, 20);
             SearchBox.TabIndex = 1;
             SearchBox.TextChanged += SearchBox_TextChanged;
             // 
@@ -219,16 +213,16 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(30, 33, 48);
-            dataGridView1.Location = new Point(0, 82);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(0, 109);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 42;
             dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(840, 359);
+            dataGridView1.Size = new Size(960, 479);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -238,18 +232,17 @@
             StatusPanel.Controls.Add(StatusDot);
             StatusPanel.Controls.Add(StatusLabel);
             StatusPanel.Dock = DockStyle.Bottom;
-            StatusPanel.Location = new Point(0, 441);
-            StatusPanel.Margin = new Padding(3, 2, 3, 2);
+            StatusPanel.Location = new Point(0, 588);
             StatusPanel.Name = "StatusPanel";
-            StatusPanel.Size = new Size(840, 24);
+            StatusPanel.Size = new Size(960, 32);
             StatusPanel.TabIndex = 4;
             // 
             // StatusDot
             // 
             StatusDot.BackColor = Color.FromArgb(22, 163, 74);
-            StatusDot.Location = new Point(13, 10);
+            StatusDot.Location = new Point(15, 13);
             StatusDot.Name = "StatusDot";
-            StatusDot.Size = new Size(7, 6);
+            StatusDot.Size = new Size(8, 8);
             StatusDot.TabIndex = 0;
             // 
             // StatusLabel
@@ -257,24 +250,33 @@
             StatusLabel.AutoSize = true;
             StatusLabel.Font = new Font("Consolas", 9F);
             StatusLabel.ForeColor = Color.FromArgb(75, 85, 99);
-            StatusLabel.Location = new Point(23, 6);
+            StatusLabel.Location = new Point(26, 8);
             StatusLabel.Name = "StatusLabel";
-            StatusLabel.Size = new Size(196, 14);
+            StatusLabel.Size = new Size(224, 18);
             StatusLabel.TabIndex = 1;
             StatusLabel.Text = "Ready  •  0 accounts stored";
             // 
+            // NgtMdTglBtn
+            // 
+            NgtMdTglBtn.Location = new Point(294, 7);
+            NgtMdTglBtn.Name = "NgtMdTglBtn";
+            NgtMdTglBtn.Size = new Size(59, 36);
+            NgtMdTglBtn.TabIndex = 3;
+            NgtMdTglBtn.Text = "Day";
+            NgtMdTglBtn.UseVisualStyleBackColor = true;
+            NgtMdTglBtn.Click += NgtMdTglBtn_Click;
+            // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 17, 23);
-            ClientSize = new Size(840, 465);
+            ClientSize = new Size(960, 620);
             Controls.Add(dataGridView1);
             Controls.Add(SearchPanel);
             Controls.Add(NavBar);
             Controls.Add(StatusPanel);
-            Margin = new Padding(3, 2, 3, 2);
-            MinimumSize = new Size(702, 385);
+            MinimumSize = new Size(800, 498);
             Name = "Dashboard";
             Text = "Lock In — Dashboard";
             NavBar.ResumeLayout(false);
@@ -306,5 +308,6 @@
         private Panel StatusPanel;
         private Label StatusDot;
         private Label StatusLabel;
+        private Button NgtMdTglBtn;
     }
 }

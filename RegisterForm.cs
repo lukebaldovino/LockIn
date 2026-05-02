@@ -68,5 +68,15 @@ namespace LockIn
         {
 
         }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CardPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

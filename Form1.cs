@@ -266,8 +266,8 @@ namespace LockIn
         private void StyleButtons()
         {
             // Apply pill-shaped rounded corners to action buttons using custom painting
-            var buttons = new[] { (AddButton, Color.FromArgb(22, 163, 74)), 
-                                 (EditBtn, Color.FromArgb(37, 99, 235)), 
+            var buttons = new[] { (AddButton, Color.FromArgb(22, 163, 74)),
+                                 (EditBtn, Color.FromArgb(37, 99, 235)),
                                  (DeleteBtn, Color.FromArgb(220, 38, 38)) };
 
             foreach (var (btn, color) in buttons)
@@ -290,7 +290,7 @@ namespace LockIn
 
                     // Draw text centered
                     using var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-                    e.Graphics.DrawString(btn.Text, btn.Font, new SolidBrush(Color.White), 
+                    e.Graphics.DrawString(btn.Text, btn.Font, new SolidBrush(Color.White),
                         new Rectangle(0, 0, btn.Width, btn.Height), sf);
                 };
             }
@@ -327,6 +327,25 @@ namespace LockIn
         private void BrandLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NgtMdTglBtn_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is Panel panel)
+                    panel.BackColor = Color.WhiteSmoke;
+                else if (ctrl is DataGridView dgv)
+                    dgv.BackgroundColor = Color.White;
+                else if (ctrl is Label lbl)
+                    lbl.ForeColor = Color.Black;
+                else if (ctrl is Button btn && btn != NgtMdTglBtn)
+                    btn.BackColor = Color.LightGray;
+            }
+
+            // Change button text to "night"
+            NgtMdTglBtn.Text = "night";
         }
     }
 

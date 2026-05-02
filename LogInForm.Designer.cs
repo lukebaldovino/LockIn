@@ -67,7 +67,7 @@ namespace LockIn
             UsernameLbl.ForeColor = Color.FromArgb(170, 170, 180);
             UsernameLbl.Location = new Point(30, 158);
             UsernameLbl.Name = "UsernameLbl";
-            UsernameLbl.Size = new Size(71, 19);
+            UsernameLbl.Size = new Size(87, 23);
             UsernameLbl.TabIndex = 3;
             UsernameLbl.Text = "Username";
             // 
@@ -77,7 +77,7 @@ namespace LockIn
             PasswordLbl.ForeColor = Color.FromArgb(170, 170, 180);
             PasswordLbl.Location = new Point(30, 222);
             PasswordLbl.Name = "PasswordLbl";
-            PasswordLbl.Size = new Size(67, 19);
+            PasswordLbl.Size = new Size(80, 23);
             PasswordLbl.TabIndex = 5;
             PasswordLbl.Text = "Password";
             // 
@@ -88,7 +88,7 @@ namespace LockIn
             UsernameField.ForeColor = Color.White;
             UsernameField.Location = new Point(30, 178);
             UsernameField.Name = "UsernameField";
-            UsernameField.Size = new Size(300, 25);
+            UsernameField.Size = new Size(300, 30);
             UsernameField.TabIndex = 4;
             // 
             // PasswordField
@@ -98,7 +98,7 @@ namespace LockIn
             PasswordField.ForeColor = Color.White;
             PasswordField.Location = new Point(30, 242);
             PasswordField.Name = "PasswordField";
-            PasswordField.Size = new Size(300, 25);
+            PasswordField.Size = new Size(300, 30);
             PasswordField.TabIndex = 6;
             PasswordField.UseSystemPasswordChar = true;
             // 
@@ -124,7 +124,7 @@ namespace LockIn
             NoAccountLbl.ForeColor = Color.FromArgb(140, 140, 150);
             NoAccountLbl.Location = new Point(94, 343);
             NoAccountLbl.Name = "NoAccountLbl";
-            NoAccountLbl.Size = new Size(85, 19);
+            NoAccountLbl.Size = new Size(107, 23);
             NoAccountLbl.TabIndex = 8;
             NoAccountLbl.Text = "No account?";
             // 
@@ -135,7 +135,7 @@ namespace LockIn
             RegisterLink.LinkColor = Color.FromArgb(100, 170, 255);
             RegisterLink.Location = new Point(176, 343);
             RegisterLink.Name = "RegisterLink";
-            RegisterLink.Size = new Size(91, 19);
+            RegisterLink.Size = new Size(112, 23);
             RegisterLink.TabIndex = 9;
             RegisterLink.TabStop = true;
             RegisterLink.Text = "Register Here";
@@ -162,7 +162,7 @@ namespace LockIn
             // 
             // LogInForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(22, 22, 26);
             ClientSize = new Size(420, 480);
@@ -174,6 +174,7 @@ namespace LockIn
             Name = "LogInForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lock In — Sign In";
+            Load += LogInForm_Load;
             CardPanel.ResumeLayout(false);
             CardPanel.PerformLayout();
             ResumeLayout(false);

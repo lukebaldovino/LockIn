@@ -19,5 +19,10 @@ namespace LockIn
         {
             // TODO: Open registration form
         }
+
+        private void LogInForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -38,7 +38,7 @@
             TitleLbl.ForeColor = Color.White;
             TitleLbl.Location = new Point(24, 20);
             TitleLbl.Name = "TitleLbl";
-            TitleLbl.Size = new Size(166, 25);
+            TitleLbl.Size = new Size(200, 30);
             TitleLbl.TabIndex = 0;
             TitleLbl.Text = "Add New Account";
             // 
@@ -48,7 +48,7 @@
             AccTypeLbl.ForeColor = Color.FromArgb(180, 180, 185);
             AccTypeLbl.Location = new Point(24, 73);
             AccTypeLbl.Name = "AccTypeLbl";
-            AccTypeLbl.Size = new Size(91, 19);
+            AccTypeLbl.Size = new Size(113, 23);
             AccTypeLbl.TabIndex = 2;
             AccTypeLbl.Text = "Account Type";
             // 
@@ -58,7 +58,7 @@
             UsernameLbl.ForeColor = Color.FromArgb(180, 180, 185);
             UsernameLbl.Location = new Point(24, 110);
             UsernameLbl.Name = "UsernameLbl";
-            UsernameLbl.Size = new Size(71, 19);
+            UsernameLbl.Size = new Size(87, 23);
             UsernameLbl.TabIndex = 4;
             UsernameLbl.Text = "Username";
             // 
@@ -68,17 +68,18 @@
             PasswordLbl.ForeColor = Color.FromArgb(180, 180, 185);
             PasswordLbl.Location = new Point(24, 144);
             PasswordLbl.Name = "PasswordLbl";
-            PasswordLbl.Size = new Size(67, 19);
+            PasswordLbl.Size = new Size(80, 23);
             PasswordLbl.TabIndex = 6;
             PasswordLbl.Text = "Password";
             // 
             // AutoGenLbl
             // 
             AutoGenLbl.AutoSize = true;
+            AutoGenLbl.Font = new Font("Segoe UI", 9F);
             AutoGenLbl.ForeColor = Color.FromArgb(180, 180, 185);
-            AutoGenLbl.Location = new Point(24, 180);
+            AutoGenLbl.Location = new Point(15, 184);
             AutoGenLbl.Name = "AutoGenLbl";
-            AutoGenLbl.Size = new Size(99, 19);
+            AutoGenLbl.Size = new Size(106, 20);
             AutoGenLbl.TabIndex = 8;
             AutoGenLbl.Text = "Auto-generate";
             // 
@@ -91,8 +92,9 @@
             AccTypeCmBx.Items.AddRange(new object[] { "Personal", "Work", "Finance", "Social", "Other" });
             AccTypeCmBx.Location = new Point(129, 73);
             AccTypeCmBx.Name = "AccTypeCmBx";
-            AccTypeCmBx.Size = new Size(266, 25);
+            AccTypeCmBx.Size = new Size(266, 31);
             AccTypeCmBx.TabIndex = 3;
+            AccTypeCmBx.SelectedIndexChanged += AccTypeCmBx_SelectedIndexChanged;
             // 
             // UsernameField
             // 
@@ -101,8 +103,9 @@
             UsernameField.ForeColor = Color.White;
             UsernameField.Location = new Point(129, 108);
             UsernameField.Name = "UsernameField";
-            UsernameField.Size = new Size(266, 25);
+            UsernameField.Size = new Size(266, 30);
             UsernameField.TabIndex = 5;
+            UsernameField.TextChanged += UsernameField_TextChanged;
             // 
             // PasswordField
             // 
@@ -111,9 +114,10 @@
             PasswordField.ForeColor = Color.White;
             PasswordField.Location = new Point(129, 144);
             PasswordField.Name = "PasswordField";
-            PasswordField.Size = new Size(266, 25);
+            PasswordField.Size = new Size(266, 30);
             PasswordField.TabIndex = 7;
             PasswordField.UseSystemPasswordChar = true;
+            PasswordField.TextChanged += PasswordField_TextChanged;
             // 
             // AutoGenBtn
             // 
@@ -191,7 +195,7 @@
             // 
             // AddAccForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 28, 30);
             ClientSize = new Size(480, 380);
