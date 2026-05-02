@@ -40,9 +40,5 @@ namespace LockIn
         {
         }
 
-        private void LogInForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

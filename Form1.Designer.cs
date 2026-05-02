@@ -33,7 +33,6 @@
             StatusPanel = new Panel();
             StatusDot = new Label();
             StatusLabel = new Label();
-            NgtMdTglBtn = new Button();
             NavBar.SuspendLayout();
             BrandPanel.SuspendLayout();
             ActionPanel.SuspendLayout();
@@ -96,10 +95,27 @@
             ActionPanel.Controls.Add(AddButton);
             ActionPanel.Controls.Add(EditBtn);
             ActionPanel.Dock = DockStyle.Right;
+            ActionPanel.ForeColor = Color.Transparent;
             ActionPanel.Location = new Point(573, 0);
             ActionPanel.Name = "ActionPanel";
             ActionPanel.Size = new Size(371, 52);
             ActionPanel.TabIndex = 1;
+            // 
+            // NgtMdTglBtn
+            // 
+            NgtMdTglBtn.BackColor = Color.FromArgb(45, 50, 65);
+            NgtMdTglBtn.Cursor = Cursors.Hand;
+            NgtMdTglBtn.FlatAppearance.BorderSize = 0;
+            NgtMdTglBtn.FlatStyle = FlatStyle.Flat;
+            NgtMdTglBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            NgtMdTglBtn.ForeColor = Color.FromArgb(226, 232, 240);
+            NgtMdTglBtn.Location = new Point(304, 11);
+            NgtMdTglBtn.Name = "NgtMdTglBtn";
+            NgtMdTglBtn.Size = new Size(59, 31);
+            NgtMdTglBtn.TabIndex = 3;
+            NgtMdTglBtn.Text = "Day";
+            NgtMdTglBtn.UseVisualStyleBackColor = false;
+            NgtMdTglBtn.Click += NgtMdTglBtn_Click;
             // 
             // DeleteBtn
             // 
@@ -115,6 +131,7 @@
             DeleteBtn.TabIndex = 0;
             DeleteBtn.Text = "Delete";
             DeleteBtn.UseVisualStyleBackColor = false;
+            DeleteBtn.Click += DeleteBtn_Click;
             // 
             // AddButton
             // 
@@ -146,22 +163,6 @@
             EditBtn.TabIndex = 2;
             EditBtn.Text = "Edit";
             EditBtn.UseVisualStyleBackColor = false;
-            // 
-            // NgtMdTglBtn
-            // 
-            NgtMdTglBtn.BackColor = Color.FromArgb(45, 50, 65);
-            NgtMdTglBtn.Cursor = Cursors.Hand;
-            NgtMdTglBtn.FlatAppearance.BorderSize = 0;
-            NgtMdTglBtn.FlatStyle = FlatStyle.Flat;
-            NgtMdTglBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
-            NgtMdTglBtn.ForeColor = Color.FromArgb(226, 232, 240);
-            NgtMdTglBtn.Location = new Point(304, 11);
-            NgtMdTglBtn.Name = "NgtMdTglBtn";
-            NgtMdTglBtn.Size = new Size(59, 31);
-            NgtMdTglBtn.TabIndex = 3;
-            NgtMdTglBtn.Text = "Day";
-            NgtMdTglBtn.UseVisualStyleBackColor = false;
-            NgtMdTglBtn.Click += NgtMdTglBtn_Click;
             // 
             // SearchPanel
             // 
@@ -273,16 +274,6 @@
             StatusLabel.TabIndex = 1;
             StatusLabel.Text = "Ready  •  0 accounts stored";
             // 
-            // NgtMdTglBtn
-            // 
-            NgtMdTglBtn.Location = new Point(294, 7);
-            NgtMdTglBtn.Name = "NgtMdTglBtn";
-            NgtMdTglBtn.Size = new Size(59, 36);
-            NgtMdTglBtn.TabIndex = 3;
-            NgtMdTglBtn.Text = "Day";
-            NgtMdTglBtn.UseVisualStyleBackColor = true;
-            NgtMdTglBtn.Click += NgtMdTglBtn_Click;
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -326,6 +317,5 @@
         private Panel StatusPanel;
         private Label StatusDot;
         private Label StatusLabel;
-        private Button NgtMdTglBtn;
     }
 }
