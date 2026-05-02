@@ -1,5 +1,3 @@
-
-
 namespace LockIn
 {
     internal static class Program
@@ -14,16 +12,16 @@ namespace LockIn
             // see https://aka.ms/applicationconfiguration.
 
             ApplicationConfiguration.Initialize();
+            Logger.Info("App started");
+
             try
             {
-                Application.Run(new Dashboard());
-                Logger.Info("Hello");
+                Application.Run(new LogInForm());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Startup Error");
             }
-
         }
     }
 }

@@ -182,16 +182,16 @@ namespace LockIn
 
         #endregion
 
-        private Panel     CardPanel;
-        private Label     LockIconLbl;
-        private Label     TitleLbl;
-        private Label     SubtitleLbl;
-        private Label     UsernameLbl;
-        private Label     PasswordLbl;
-        private TextBox   UsernameField;
-        private TextBox   PasswordField;
-        private Button    LogInButton;
-        private Label     NoAccountLbl;
+        private Panel CardPanel;
+        private Label LockIconLbl;
+        private Label TitleLbl;
+        private Label SubtitleLbl;
+        private Label UsernameLbl;
+        private Label PasswordLbl;
+        private TextBox UsernameField;
+        private TextBox PasswordField;
+        private Button LogInButton;
+        private Label NoAccountLbl;
         private LinkLabel RegisterLink;
     }
 }

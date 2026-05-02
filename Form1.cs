@@ -14,6 +14,9 @@ namespace LockIn
         private static readonly (Color bg, Color fg) BadgeWork = (Color.FromArgb(20, 83, 45), Color.FromArgb(74, 222, 128));
         private static readonly (Color bg, Color fg) BadgeSchool = (Color.FromArgb(69, 26, 3), Color.FromArgb(251, 146, 60));
 
+        // ── Night-mode state ─────────────────────────────────────────
+        private bool _isDayMode = true;   // starts in Night (dark) mode; button shows "Day" to switch
+
         public Dashboard()
         {
             InitializeComponent();
@@ -140,7 +143,6 @@ namespace LockIn
                 e.Graphics!.FillRectangle(new SolidBrush(rowBg), e.CellBounds);
 
                 int dotSize = 5, dotGap = 4, dotCount = 8;
-                int totalW = dotCount * dotSize + (dotCount - 1) * dotGap;
                 int startX = e.CellBounds.X + 8;
                 int startY = e.CellBounds.Y + (e.CellBounds.Height - dotSize) / 2;
 
@@ -176,7 +178,6 @@ namespace LockIn
                 int bx = e.CellBounds.X + (e.CellBounds.Width - bw) / 2;
                 int by = e.CellBounds.Y + (e.CellBounds.Height - bh) / 2;
 
-                // Draw pill-shaped button
                 int radius = bh / 2;
                 using var path = RoundedRect(new Rectangle(bx, by, bw, bh), radius);
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -189,21 +190,21 @@ namespace LockIn
         }
 
         // ── Sample data ───────────────────────────────────────────────
-        private List<AccountEntry> _allAccounts = new();
+        private List<PasswordEntry> _allAccounts = new();
 
         private void LoadSampleData()
         {
-            _allAccounts = new List<AccountEntry>
+            _allAccounts = new List<PasswordEntry>
             {
-                new("Personal", "luke@gmail.com",               "Gmail",            "hunter2"),
-                new("Work",     "l.baldovino@batstate.edu",      "BatStateU Portal", "p@ssword1"),
-                new("School",   "ronjae@github.com",             "GitHub",           "gh_secret"),
-                new("Personal", "ace.botones",                   "Discord",          "discordpw"),
+                new("Personal", "luke@gmail.com",              "Gmail",            "hunter2"),
+                new("Work",     "l.baldovino@batstate.edu",     "BatStateU Portal", "p@ssword1"),
+                new("School",   "ronjae@github.com",            "GitHub",           "gh_secret"),
+                new("Personal", "ace.botones",                  "Discord",          "discordpw"),
             };
             BindAccounts(_allAccounts);
         }
 
-        private void BindAccounts(IEnumerable<AccountEntry> accounts)
+        private void BindAccounts(IEnumerable<PasswordEntry> accounts)
         {
             dataGridView1.DataSource = accounts.ToList();
             UpdateStatus();
@@ -250,10 +251,103 @@ namespace LockIn
             }
         }
 
+        // ── Night / Day mode toggle ───────────────────────────────────
+        private void NgtMdTglBtn_Click(object sender, EventArgs e)
+        {
+            _isDayMode = !_isDayMode;
+
+            if (_isDayMode)
+            {
+                // Switch to Day (light) mode
+                NgtMdTglBtn.Text = "Night";
+
+                Color lightBg = Color.FromArgb(245, 247, 250);
+                Color lightSurface = Color.FromArgb(255, 255, 255);
+                Color lightNav = Color.FromArgb(255, 255, 255);
+                Color lightBorder = Color.FromArgb(209, 213, 219);
+                Color lightText = Color.FromArgb(55, 65, 81);
+                Color lightMuted = Color.FromArgb(107, 114, 128);
+
+                this.BackColor = lightBg;
+                NavBar.BackColor = lightNav;
+                SearchPanel.BackColor = lightBg;
+                StatusPanel.BackColor = lightBg;
+                SearchBox.BackColor = lightSurface;
+                SearchBox.ForeColor = lightText;
+                BrandLabel.ForeColor = Color.FromArgb(17, 24, 39);
+                LockIconLabel.ForeColor = Color.FromArgb(17, 24, 39);
+                StatusLabel.ForeColor = lightMuted;
+                SearchIconLabel.ForeColor = lightMuted;
+                NgtMdTglBtn.BackColor = Color.FromArgb(229, 231, 235);
+                NgtMdTglBtn.ForeColor = Color.FromArgb(17, 24, 39);
+
+                // DataGridView
+                var dgvBg = new DataGridViewCellStyle(dataGridView1.DefaultCellStyle)
+                {
+                    BackColor = lightSurface,
+                    ForeColor = lightText,
+                    SelectionBackColor = lightBorder,
+                    SelectionForeColor = Color.FromArgb(17, 24, 39)
+                };
+                dataGridView1.DefaultCellStyle = dgvBg;
+                dataGridView1.BackgroundColor = lightBg;
+                dataGridView1.GridColor = lightBorder;
+
+                var hdrStyle = new DataGridViewCellStyle(dataGridView1.ColumnHeadersDefaultCellStyle)
+                {
+                    BackColor = lightBg,
+                    ForeColor = lightMuted,
+                    SelectionBackColor = lightBg,
+                    SelectionForeColor = lightMuted
+                };
+                dataGridView1.ColumnHeadersDefaultCellStyle = hdrStyle;
+            }
+            else
+            {
+                // Switch back to Night (dark) mode
+                NgtMdTglBtn.Text = "Day";
+
+                this.BackColor = Color.FromArgb(15, 17, 23);
+                NavBar.BackColor = Color.FromArgb(22, 25, 33);
+                SearchPanel.BackColor = Color.FromArgb(15, 17, 23);
+                StatusPanel.BackColor = Color.FromArgb(15, 17, 23);
+                SearchBox.BackColor = Color.FromArgb(10, 12, 18);
+                SearchBox.ForeColor = Color.FromArgb(156, 163, 175);
+                BrandLabel.ForeColor = Color.FromArgb(226, 232, 240);
+                LockIconLabel.ForeColor = Color.FromArgb(226, 232, 240);
+                StatusLabel.ForeColor = Color.FromArgb(75, 85, 99);
+                SearchIconLabel.ForeColor = Color.FromArgb(75, 85, 99);
+                NgtMdTglBtn.BackColor = Color.FromArgb(45, 50, 65);
+                NgtMdTglBtn.ForeColor = Color.FromArgb(226, 232, 240);
+
+                // DataGridView
+                var dgvBg = new DataGridViewCellStyle(dataGridView1.DefaultCellStyle)
+                {
+                    BackColor = Color.FromArgb(15, 17, 23),
+                    ForeColor = Color.FromArgb(156, 163, 175),
+                    SelectionBackColor = Color.FromArgb(22, 25, 33),
+                    SelectionForeColor = Color.FromArgb(209, 213, 219)
+                };
+                dataGridView1.DefaultCellStyle = dgvBg;
+                dataGridView1.BackgroundColor = Color.FromArgb(15, 17, 23);
+                dataGridView1.GridColor = Color.FromArgb(30, 33, 48);
+
+                var hdrStyle = new DataGridViewCellStyle(dataGridView1.ColumnHeadersDefaultCellStyle)
+                {
+                    BackColor = Color.FromArgb(15, 17, 23),
+                    ForeColor = Color.FromArgb(75, 85, 99),
+                    SelectionBackColor = Color.FromArgb(15, 17, 23),
+                    SelectionForeColor = Color.FromArgb(75, 85, 99)
+                };
+                dataGridView1.ColumnHeadersDefaultCellStyle = hdrStyle;
+            }
+
+            dataGridView1.Invalidate();
+        }
+
         // ── Helpers ──────────────────────────────────────────────────
         private void RoundStatusDot()
         {
-            // Make the status dot appear as a circle using Paint
             StatusDot.Paint += (s, e) =>
             {
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -265,10 +359,11 @@ namespace LockIn
 
         private void StyleButtons()
         {
-            // Apply pill-shaped rounded corners to action buttons using custom painting
-            var buttons = new[] { (AddButton, Color.FromArgb(22, 163, 74)),
-                                 (EditBtn, Color.FromArgb(37, 99, 235)),
-                                 (DeleteBtn, Color.FromArgb(220, 38, 38)) };
+            var buttons = new[] {
+                (AddButton, Color.FromArgb(22, 163, 74)),
+                (EditBtn,   Color.FromArgb(37, 99, 235)),
+                (DeleteBtn, Color.FromArgb(220, 38, 38))
+            };
 
             foreach (var (btn, color) in buttons)
             {
@@ -276,13 +371,11 @@ namespace LockIn
                 btn.FlatAppearance.BorderSize = 0;
                 btn.Cursor = Cursors.Hand;
 
-                // Custom paint handler for pill-shaped rounded corners
                 btn.Paint += (s, e) =>
                 {
                     e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                     e.Graphics.Clear(btn.Parent!.BackColor);
 
-                    // Draw pill-shaped background (radius = half height)
                     int radius = btn.Height / 2;
                     using var path = RoundedRect(new Rectangle(0, 0, btn.Width - 1, btn.Height - 1), radius);
                     using var brush = new SolidBrush(color);
@@ -290,7 +383,7 @@ namespace LockIn
 
                     // Draw text centered
                     using var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-                    e.Graphics.DrawString(btn.Text, btn.Font, new SolidBrush(Color.White),
+                    e.Graphics.DrawString(btn.Text, btn.Font, new SolidBrush(Color.White), 
                         new Rectangle(0, 0, btn.Width, btn.Height), sf);
                 };
             }
@@ -298,7 +391,6 @@ namespace LockIn
 
         private void SetupPanelBorders()
         {
-            // Add subtle bottom borders to NavBar and SearchPanel
             NavBar.Paint += (s, e) =>
             {
                 using var borderPen = new Pen(BorderColor, 1);
@@ -326,7 +418,6 @@ namespace LockIn
 
         private void BrandLabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void NgtMdTglBtn_Click(object sender, EventArgs e)
@@ -350,5 +441,5 @@ namespace LockIn
     }
 
     // ── Data model ───────────────────────────────────────────────────
-    public record AccountEntry(string Type, string Username, string Service, string Password);
+    public record PasswordEntry(string Type, string Username, string Service, string Password);
 }

@@ -22,6 +22,7 @@
             LockIconLabel = new Label();
             BrandLabel = new Label();
             ActionPanel = new Panel();
+            NgtMdTglBtn = new Button();
             DeleteBtn = new Button();
             AddButton = new Button();
             EditBtn = new Button();
@@ -145,6 +146,22 @@
             EditBtn.TabIndex = 2;
             EditBtn.Text = "Edit";
             EditBtn.UseVisualStyleBackColor = false;
+            // 
+            // NgtMdTglBtn
+            // 
+            NgtMdTglBtn.BackColor = Color.FromArgb(45, 50, 65);
+            NgtMdTglBtn.Cursor = Cursors.Hand;
+            NgtMdTglBtn.FlatAppearance.BorderSize = 0;
+            NgtMdTglBtn.FlatStyle = FlatStyle.Flat;
+            NgtMdTglBtn.Font = new Font("Consolas", 9F, FontStyle.Bold);
+            NgtMdTglBtn.ForeColor = Color.FromArgb(226, 232, 240);
+            NgtMdTglBtn.Location = new Point(304, 11);
+            NgtMdTglBtn.Name = "NgtMdTglBtn";
+            NgtMdTglBtn.Size = new Size(59, 31);
+            NgtMdTglBtn.TabIndex = 3;
+            NgtMdTglBtn.Text = "Day";
+            NgtMdTglBtn.UseVisualStyleBackColor = false;
+            NgtMdTglBtn.Click += NgtMdTglBtn_Click;
             // 
             // SearchPanel
             // 
@@ -301,6 +318,7 @@
         private Button DeleteBtn;
         private Button AddButton;
         private Button EditBtn;
+        private Button NgtMdTglBtn;
         private Panel SearchPanel;
         private Label SearchIconLabel;
         private TextBox SearchBox;
