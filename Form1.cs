@@ -27,6 +27,7 @@ namespace LockIn
             StyleButtons();
             SetupPanelBorders();
             SearchBox.TextChanged += SearchBox_TextChanged;
+            
         }
 
         // ── Columns ──────────────────────────────────────────────────
@@ -305,6 +306,7 @@ namespace LockIn
             else
             {
                 // Switch back to Night (dark) mode
+
                 NgtMdTglBtn.Text = "Day";
 
                 this.BackColor = Color.FromArgb(15, 17, 23);
@@ -362,7 +364,8 @@ namespace LockIn
             var buttons = new[] {
                 (AddButton, Color.FromArgb(22, 163, 74)),
                 (EditBtn,   Color.FromArgb(37, 99, 235)),
-                (DeleteBtn, Color.FromArgb(220, 38, 38))
+                (DeleteBtn, Color.FromArgb(220, 38, 38)),
+                (NgtMdTglBtn, Color.FromArgb(45, 50, 65)),
             };
 
             foreach (var (btn, color) in buttons)
