@@ -15,7 +15,7 @@ namespace LockIn
         private static readonly (Color bg, Color fg) BadgeSchool = (Color.FromArgb(69, 26, 3), Color.FromArgb(251, 146, 60));
 
         // ── Night-mode state ─────────────────────────────────────────
-        private bool _isDayMode = true;   // starts in Night (dark) mode; button shows "Day" to switch
+        private bool _isDayMode = false;   // starts in Night (dark) mode; button shows "Day" to switch
 
         public Dashboard()
         {
@@ -103,7 +103,25 @@ namespace LockIn
             if (e.RowIndex < 0) return;
 
             bool selected = (e.State & DataGridViewElementStates.Selected) != 0;
-            Color rowBg = selected ? BgSurface : BgPrimary;
+            Color rowBg, badgeBg, badgeFg, buttonBg, buttonFg;
+
+            if (_isDayMode)
+            {
+                rowBg = Color.FromArgb(255, 255, 255); // light surface
+                badgeBg = Color.FromArgb(219, 234, 254); // light blue
+                badgeFg = Color.FromArgb(30, 64, 175);   // dark blue
+                buttonBg = Color.FromArgb(37, 99, 235);  // blue (same as dark)
+                buttonFg = Color.White;
+            }
+            else
+            {
+                rowBg = BgPrimary;
+                badgeBg = BadgeWork.bg;
+                badgeFg = BadgeWork.fg;
+                buttonBg = Color.FromArgb(37, 99, 235);
+                buttonFg = Color.White;
+            }
+
 
             // ── Type badge ───────────────────────────────────────────
             if (e.ColumnIndex == dataGridView1.Columns["colType"]!.Index)
@@ -165,8 +183,7 @@ namespace LockIn
                 e.Graphics!.FillRectangle(new SolidBrush(rowBg), e.CellBounds);
 
                 string buttonText = "View";
-                Color buttonBg = Color.FromArgb(37, 99, 235);
-                Color buttonFg = Color.White;
+                
 
                 using var buttonBrush = new SolidBrush(buttonBg);
                 using var textBrush = new SolidBrush(buttonFg);
@@ -383,6 +400,7 @@ namespace LockIn
                     using var path = RoundedRect(new Rectangle(0, 0, btn.Width - 1, btn.Height - 1), radius);
                     using var brush = new SolidBrush(color);
                     e.Graphics.FillPath(brush, path);
+
 
                     // Draw text centered
                     using var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
