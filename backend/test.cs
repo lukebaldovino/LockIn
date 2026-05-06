@@ -4,8 +4,8 @@ public static class Tests
     {
         var accounts = new Dictionary<string, AccountEntry>
         {
-            ["alice"] = new AccountEntry("alice", "encrypted123", "ivvalue"),
-            ["bob"] = new AccountEntry("bob", "encrypted456", "ivvalue2")
+            ["alice"] = new AccountEntry("alice", "encrypted123", "ivvalue", AccountType.School),
+            ["bob"] = new AccountEntry("bob", "encrypted456", "ivvalue2", AccountType.Work)
         };
 
         AccountStorage.Save(accounts);

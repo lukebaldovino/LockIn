@@ -40,11 +40,11 @@ public static class UtilityFunctions
     /// Raises:
     ///     InvalidOperationException: If Initialize has not been called.
     /// </summary>
-    public static (string serviceKey, string username) CreateAccount(string serviceKey, string username, string password)
+    public static (string serviceKey, string username) CreateAccount(string serviceKey, string username, string password, AccountType type)
     {
         var accounts = AccountStorage.Load();
         var (cipher, iv) = AesCrypto.Encrypt(password);
-        accounts[serviceKey] = new AccountEntry(username, cipher, iv);
+        accounts[serviceKey] = new AccountEntry(username, cipher, iv, type);
         AccountStorage.Save(accounts);
         Logger.Info($"Account created: serviceKey={serviceKey}, username={username}");
         return (serviceKey, username);
@@ -161,7 +161,7 @@ public static class UtilityFunctions
             throw new KeyNotFoundException($"Account not found for serviceKey: {serviceKey}");
 
         var (cipher, iv) = AesCrypto.Encrypt(newPassword);
-        accounts[serviceKey] = new AccountEntry(entry.Username, cipher, iv);
+        accounts[serviceKey] = new AccountEntry(entry.Username, cipher, iv, entry.Type);
         AccountStorage.Save(accounts);
         Logger.Info($"Password updated for: serviceKey={serviceKey}");
         return (serviceKey, entry.Username);
