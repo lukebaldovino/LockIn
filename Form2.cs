@@ -2,7 +2,7 @@
 {
     public partial class AddAccForm : Form
     {
-        public string AccountType { get; private set; } = "";
+        public string AccountTypeName { get; private set; } = "";
         public string Username { get; private set; } = "";
         public string Password { get; private set; } = "";
         public string Service { get; private set; } = "";
@@ -76,7 +76,7 @@
             Service = service;
             Username = username;
             Password = password;
-            AccountType = type;
+            AccountTypeName = type;
             DialogResult = DialogResult.OK;
             Close();
         }

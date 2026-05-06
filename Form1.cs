@@ -207,8 +207,9 @@ namespace LockIn
                 }).ToList();
                 bindingSource.DataSource = new BindingList<AccountView>(accList);
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.Error("LoadAccounts failed", ex);
                 bindingSource.DataSource = new BindingList<AccountView>();
             }
             UpdateStatus();
@@ -261,7 +262,7 @@ namespace LockIn
             {
                 try
                 {
-                    if (Enum.TryParse<AccountType>(addAcc.AccountType, out var accType))
+                    if (Enum.TryParse<AccountType>(addAcc.AccountTypeName, out var accType))
                     {
                         UtilityFunctions.CreateAccount(addAcc.Service, addAcc.Username, addAcc.Password, accType);
                         Logger.Info($"Account added: {addAcc.Service}");
