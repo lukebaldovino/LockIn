@@ -49,7 +49,7 @@ namespace LockIn
 
         private void ApplyTheme()
         {
-            BackColor = ThemeColors.BgPrimary;
+            BackColor = ThemeColors.BgCard;
             CardPanel.BackColor = ThemeColors.BgCard;
             TitleLbl.ForeColor = ThemeColors.TextBright;
             SubtitleLbl.ForeColor = ThemeColors.TextPlaceholder;

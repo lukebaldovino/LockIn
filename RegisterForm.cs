@@ -57,59 +57,28 @@
             CreateAccBtn.FlatStyle = FlatStyle.Flat;
             CreateAccBtn.FlatAppearance.BorderSize = 0;
             CreateAccBtn.Cursor = Cursors.Hand;
-
-            CreateAccBtn.Paint += (s, e) =>
-            {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                e.Graphics.Clear(CardPanel.BackColor);
-
-                int radius = CreateAccBtn.Height / 2;
-                using var path = RoundedRect(new Rectangle(0, 0, CreateAccBtn.Width - 1, CreateAccBtn.Height - 1), radius);
-                using var brush = new SolidBrush(Color.FromArgb(22, 163, 74));
-                e.Graphics.FillPath(brush, path);
-
-                using var sf = new StringFormat
-                {
-                    Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center
-                };
-                e.Graphics.DrawString(CreateAccBtn.Text, CreateAccBtn.Font, new SolidBrush(Color.White),
-                    new Rectangle(0, 0, CreateAccBtn.Width, CreateAccBtn.Height), sf);
-            };
         }
 
         private void ApplyTheme()
         {
-            BackColor = ThemeColors.BgPrimary;
-            CardPanel.BackColor = ThemeColors.BgSurface;
+            BackColor = ThemeColors.BgCard;
+            CardPanel.BackColor = ThemeColors.BgCard;
             TitleLbl.ForeColor = ThemeColors.TextBright;
-            SubtitleLbl.ForeColor = ThemeColors.TextMuted;
-            UsernameLbl.ForeColor = ThemeColors.TextMuted;
-            PasswordLbl.ForeColor = ThemeColors.TextMuted;
-            ConfirmPasswordLbl.ForeColor = ThemeColors.TextMuted;
-            UsernameField.BackColor = ThemeColors.BgInputAlt;
+            SubtitleLbl.ForeColor = ThemeColors.TextPlaceholder;
+            UsernameLbl.ForeColor = ThemeColors.TextLabel;
+            PasswordLbl.ForeColor = ThemeColors.TextLabel;
+            ConfirmPasswordLbl.ForeColor = ThemeColors.TextLabel;
+            UsernameField.BackColor = ThemeColors.BgInput;
             UsernameField.ForeColor = ThemeColors.TextBright;
-            PasswordField.BackColor = ThemeColors.BgInputAlt;
+            PasswordField.BackColor = ThemeColors.BgInput;
             PasswordField.ForeColor = ThemeColors.TextBright;
-            ConfirmPasswordField.BackColor = ThemeColors.BgInputAlt;
+            ConfirmPasswordField.BackColor = ThemeColors.BgInput;
             ConfirmPasswordField.ForeColor = ThemeColors.TextBright;
-            CreateAccBtn.BackColor = ThemeColors.AccentGreen;
-            AlreadyHaveLbl.ForeColor = ThemeColors.TextMuted;
-            SignInLink.LinkColor = Color.FromArgb(96, 165, 250);
+            CreateAccBtn.BackColor = ThemeColors.AccentBlue;
+            AlreadyHaveLbl.ForeColor = ThemeColors.TextPlaceholder;
+            SignInLink.LinkColor = Color.FromArgb(100, 170, 255);
             SignInLink.ActiveLinkColor = Color.White;
-            SignInLink.VisitedLinkColor = Color.FromArgb(96, 165, 250);
-        }
-
-        private static System.Drawing.Drawing2D.GraphicsPath RoundedRect(Rectangle r, int radius)
-        {
-            var path = new System.Drawing.Drawing2D.GraphicsPath();
-            int d = radius * 2;
-            path.AddArc(r.X, r.Y, d, d, 180, 90);
-            path.AddArc(r.Right - d, r.Y, d, d, 270, 90);
-            path.AddArc(r.Right - d, r.Bottom - d, d, d, 0, 90);
-            path.AddArc(r.X, r.Bottom - d, d, d, 90, 90);
-            path.CloseFigure();
-            return path;
+            SignInLink.VisitedLinkColor = Color.FromArgb(100, 170, 255);
         }
 
         private void UsernameField_TextChanged(object sender, EventArgs e) { }

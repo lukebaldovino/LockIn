@@ -164,7 +164,7 @@ namespace LockIn
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(22, 22, 26);
+            BackColor = Color.FromArgb(36, 36, 42);
             ClientSize = new Size(420, 490);
             Controls.Add(CardPanel);
             Font = new Font("Segoe UI", 10F);

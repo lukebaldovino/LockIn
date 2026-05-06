@@ -95,47 +95,44 @@
             // 
             // UsernameField
             // 
-            UsernameField.BackColor = Color.FromArgb(30, 33, 48);
-            UsernameField.BorderStyle = BorderStyle.None;
-            UsernameField.Font = new Font("Consolas", 10F);
-            UsernameField.ForeColor = Color.FromArgb(209, 213, 219);
+            UsernameField.BackColor = Color.FromArgb(50, 50, 58);
+            UsernameField.BorderStyle = BorderStyle.FixedSingle;
+            UsernameField.ForeColor = Color.White;
             UsernameField.Location = new Point(30, 175);
             UsernameField.Name = "UsernameField";
-            UsernameField.Size = new Size(300, 20);
+            UsernameField.Size = new Size(300, 30);
             UsernameField.TabIndex = 4;
             UsernameField.TextChanged += UsernameField_TextChanged;
             // 
             // PasswordField
             // 
-            PasswordField.BackColor = Color.FromArgb(30, 33, 48);
-            PasswordField.BorderStyle = BorderStyle.None;
-            PasswordField.Font = new Font("Consolas", 10F);
-            PasswordField.ForeColor = Color.FromArgb(209, 213, 219);
+            PasswordField.BackColor = Color.FromArgb(50, 50, 58);
+            PasswordField.BorderStyle = BorderStyle.FixedSingle;
+            PasswordField.ForeColor = Color.White;
             PasswordField.Location = new Point(30, 241);
             PasswordField.Name = "PasswordField";
-            PasswordField.Size = new Size(300, 20);
+            PasswordField.Size = new Size(300, 30);
             PasswordField.TabIndex = 6;
             PasswordField.UseSystemPasswordChar = true;
             // 
             // ConfirmPasswordField
             // 
-            ConfirmPasswordField.BackColor = Color.FromArgb(30, 33, 48);
-            ConfirmPasswordField.BorderStyle = BorderStyle.None;
-            ConfirmPasswordField.Font = new Font("Consolas", 10F);
-            ConfirmPasswordField.ForeColor = Color.FromArgb(209, 213, 219);
+            ConfirmPasswordField.BackColor = Color.FromArgb(50, 50, 58);
+            ConfirmPasswordField.BorderStyle = BorderStyle.FixedSingle;
+            ConfirmPasswordField.ForeColor = Color.White;
             ConfirmPasswordField.Location = new Point(30, 307);
             ConfirmPasswordField.Name = "ConfirmPasswordField";
-            ConfirmPasswordField.Size = new Size(300, 20);
+            ConfirmPasswordField.Size = new Size(300, 30);
             ConfirmPasswordField.TabIndex = 8;
             ConfirmPasswordField.UseSystemPasswordChar = true;
             // 
             // CreateAccBtn
             // 
-            CreateAccBtn.BackColor = Color.FromArgb(22, 163, 74);
+            CreateAccBtn.BackColor = Color.FromArgb(58, 130, 246);
             CreateAccBtn.Cursor = Cursors.Hand;
             CreateAccBtn.FlatAppearance.BorderSize = 0;
             CreateAccBtn.FlatStyle = FlatStyle.Flat;
-            CreateAccBtn.Font = new Font("Consolas", 10F, FontStyle.Bold);
+            CreateAccBtn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             CreateAccBtn.ForeColor = Color.White;
             CreateAccBtn.Location = new Point(30, 357);
             CreateAccBtn.Name = "CreateAccBtn";
@@ -172,7 +169,7 @@
             // 
             // CardPanel
             // 
-            CardPanel.BackColor = Color.FromArgb(22, 25, 33);
+            CardPanel.BackColor = Color.FromArgb(36, 36, 42);
             CardPanel.Controls.Add(LockIconLbl);
             CardPanel.Controls.Add(TitleLbl);
             CardPanel.Controls.Add(SubtitleLbl);
@@ -195,7 +192,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(15, 17, 23);
+            BackColor = Color.FromArgb(36, 36, 42);
             ClientSize = new Size(420, 530);
             Controls.Add(CardPanel);
             Font = new Font("Segoe UI", 10F);
