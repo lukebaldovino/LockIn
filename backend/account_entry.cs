@@ -3,6 +3,13 @@
 /// corresponding initialization vector. Used as the data model for account
 /// serialization and deserialization to/from JSON storage.
 /// </summary>
+/// 
+public enum AccountType
+{
+    Personal,
+    School,
+    Work
+}
 public class AccountEntry
 {
     /// <summary>
@@ -27,6 +34,9 @@ public class AccountEntry
     /// Useful for deserialization scenarios where properties are populated
     /// after construction.
     /// </summary>
+    /// 
+    public AccountType Type { get; set; }
+    // specifies account type for work, personal or school use, not used in encryption/decryption
     public AccountEntry() { }
 
     /// <summary>
@@ -39,10 +49,12 @@ public class AccountEntry
     ///     encryptedPassword: The Base64-encoded AES-256 encrypted password.
     ///     iv: The Base64-encoded AES initialization vector used during encryption.
     /// </summary>
-    public AccountEntry(string username, string encryptedPassword, string iv)
+    public AccountEntry(string username, string encryptedPassword, string iv, AccountType type)
     {
         Username = username;
         EncryptedPassword = encryptedPassword;
         IV = iv;
+        Type = type;
+
     }
 }
