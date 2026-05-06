@@ -27,6 +27,8 @@
             ConfirmBtn = new Button();
             CancelBtn = new Button();
             MainPanel = new Panel();
+            ServicetxtBx = new TextBox();
+            Sevicelbl = new Label();
             SeparatorPanel = new Panel();
             MainPanel.SuspendLayout();
             SuspendLayout();
@@ -56,7 +58,7 @@
             // 
             UsernameLbl.AutoSize = true;
             UsernameLbl.ForeColor = Color.FromArgb(180, 180, 185);
-            UsernameLbl.Location = new Point(24, 110);
+            UsernameLbl.Location = new Point(24, 153);
             UsernameLbl.Name = "UsernameLbl";
             UsernameLbl.Size = new Size(87, 23);
             UsernameLbl.TabIndex = 4;
@@ -66,7 +68,7 @@
             // 
             PasswordLbl.AutoSize = true;
             PasswordLbl.ForeColor = Color.FromArgb(180, 180, 185);
-            PasswordLbl.Location = new Point(24, 144);
+            PasswordLbl.Location = new Point(24, 187);
             PasswordLbl.Name = "PasswordLbl";
             PasswordLbl.Size = new Size(80, 23);
             PasswordLbl.TabIndex = 6;
@@ -77,7 +79,7 @@
             AutoGenLbl.AutoSize = true;
             AutoGenLbl.Font = new Font("Segoe UI", 9F);
             AutoGenLbl.ForeColor = Color.FromArgb(180, 180, 185);
-            AutoGenLbl.Location = new Point(15, 184);
+            AutoGenLbl.Location = new Point(15, 227);
             AutoGenLbl.Name = "AutoGenLbl";
             AutoGenLbl.Size = new Size(106, 20);
             AutoGenLbl.TabIndex = 8;
@@ -101,7 +103,7 @@
             UsernameField.BackColor = Color.FromArgb(50, 50, 55);
             UsernameField.BorderStyle = BorderStyle.FixedSingle;
             UsernameField.ForeColor = Color.White;
-            UsernameField.Location = new Point(129, 108);
+            UsernameField.Location = new Point(129, 151);
             UsernameField.Name = "UsernameField";
             UsernameField.Size = new Size(266, 30);
             UsernameField.TabIndex = 5;
@@ -112,7 +114,7 @@
             PasswordField.BackColor = Color.FromArgb(50, 50, 55);
             PasswordField.BorderStyle = BorderStyle.FixedSingle;
             PasswordField.ForeColor = Color.White;
-            PasswordField.Location = new Point(129, 144);
+            PasswordField.Location = new Point(129, 187);
             PasswordField.Name = "PasswordField";
             PasswordField.Size = new Size(266, 30);
             PasswordField.TabIndex = 7;
@@ -126,7 +128,7 @@
             AutoGenBtn.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 85);
             AutoGenBtn.FlatStyle = FlatStyle.Flat;
             AutoGenBtn.ForeColor = Color.FromArgb(220, 220, 220);
-            AutoGenBtn.Location = new Point(129, 180);
+            AutoGenBtn.Location = new Point(129, 223);
             AutoGenBtn.Name = "AutoGenBtn";
             AutoGenBtn.Size = new Size(266, 30);
             AutoGenBtn.TabIndex = 9;
@@ -167,6 +169,8 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.FromArgb(36, 36, 40);
+            MainPanel.Controls.Add(ServicetxtBx);
+            MainPanel.Controls.Add(Sevicelbl);
             MainPanel.Controls.Add(TitleLbl);
             MainPanel.Controls.Add(SeparatorPanel);
             MainPanel.Controls.Add(AccTypeLbl);
@@ -184,6 +188,28 @@
             MainPanel.Padding = new Padding(24);
             MainPanel.Size = new Size(440, 340);
             MainPanel.TabIndex = 0;
+            // 
+            // ServicetxtBx
+            // 
+            ServicetxtBx.BackColor = Color.FromArgb(50, 50, 55);
+            ServicetxtBx.BorderStyle = BorderStyle.FixedSingle;
+            ServicetxtBx.ForeColor = Color.White;
+            ServicetxtBx.Location = new Point(129, 114);
+            ServicetxtBx.Name = "ServicetxtBx";
+            ServicetxtBx.Size = new Size(266, 30);
+            ServicetxtBx.TabIndex = 13;
+            ServicetxtBx.TextChanged += ServicetxtBx_TextChanged;
+            // 
+            // Sevicelbl
+            // 
+            Sevicelbl.AutoSize = true;
+            Sevicelbl.ForeColor = Color.FromArgb(180, 180, 185);
+            Sevicelbl.Location = new Point(27, 116);
+            Sevicelbl.Name = "Sevicelbl";
+            Sevicelbl.Size = new Size(63, 23);
+            Sevicelbl.TabIndex = 12;
+            Sevicelbl.Text = "Service";
+            Sevicelbl.Click += label1_Click;
             // 
             // SeparatorPanel
             // 
@@ -228,5 +254,7 @@
         private Button AutoGenBtn;
         private Button ConfirmBtn;
         private Button CancelBtn;
+        private Label Sevicelbl;
+        private TextBox ServicetxtBx;
     }
 }

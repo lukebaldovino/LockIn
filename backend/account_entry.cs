@@ -21,6 +21,8 @@ public class AccountEntry
     /// The AES-256 encrypted password encoded as a Base64 string.
     /// Decrypted at runtime using the matching IV and encryption key.
     /// </summary>
+    /// 
+
     public string EncryptedPassword { get; set; }
 
     /// <summary>
@@ -36,6 +38,7 @@ public class AccountEntry
     /// </summary>
     /// 
     public AccountType Type { get; set; }
+
     // specifies account type for work, personal or school use, not used in encryption/decryption
     public AccountEntry() { }
 

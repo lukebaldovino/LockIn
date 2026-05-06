@@ -1,7 +1,10 @@
+using System.ComponentModel;
+
 namespace LockIn
 {
     public partial class Dashboard : Form
     {
+        private BindingSource bindingSource = new BindingSource();
         // ── Color constants matching the dark theme ──────────────────
         private static readonly Color BgPrimary = Color.FromArgb(15, 17, 23);
         private static readonly Color BgSurface = Color.FromArgb(22, 25, 33);
@@ -22,12 +25,19 @@ namespace LockIn
             InitializeComponent();
             SetupColumns();
             SetupDgvPainting();
-            LoadSampleData();
+            //LoadSampleData();
             RoundStatusDot();
             StyleButtons();
             SetupPanelBorders();
             SearchBox.TextChanged += SearchBox_TextChanged;
-            
+            dataGridView1.DataSource = bindingSource;
+            LoadAccounts();
+
+            // Hide sensitive columns after data binding (when columns exist)
+            if (dataGridView1.Columns["EncryptedPassword"] != null)
+                dataGridView1.Columns["EncryptedPassword"].Visible = false;
+            if (dataGridView1.Columns["IV"] != null)
+                dataGridView1.Columns["IV"].Visible = false;
         }
 
         // ── Columns ──────────────────────────────────────────────────
@@ -90,6 +100,7 @@ namespace LockIn
             colAction.DefaultCellStyle.Padding = new Padding(2);
 
             dataGridView1.Columns.AddRange(colType, colUser, colService, colPassword, colAction);
+            // Removed hiding columns here
         }
 
         // ── Owner-draw: badges + password dots ───────────────────────
@@ -208,7 +219,20 @@ namespace LockIn
         }
 
         // ── Sample data ───────────────────────────────────────────────
-        private List<PasswordEntry> _allAccounts = new();
+        private void LoadAccounts()
+        {
+            var accDicts = AccountStorage.Load();
+            var accList = accDicts.Select(kvp => new AccountView
+            {
+                Type = kvp.Value.Type.ToString(),
+                Username = kvp.Value.Username,
+                Service = kvp.Key,
+                Password = kvp.Value.EncryptedPassword
+            }).ToList();
+            bindingSource.DataSource = new BindingList<AccountView>(accList);
+
+        }
+        /**private List<PasswordEntry> _allAccounts = new();
 
         private void LoadSampleData()
         {
@@ -227,24 +251,47 @@ namespace LockIn
             dataGridView1.DataSource = accounts.ToList();
             UpdateStatus();
         }
+        **/
+        private void RefreshAccounts()
+        {
+            LoadAccounts();
+        }
 
         private void UpdateStatus()
         {
             int count = dataGridView1.RowCount;
             StatusLabel.Text = $"Ready  •  {count} account{(count == 1 ? "" : "s")} stored";
+            RefreshAccounts();
         }
 
         // ── Search ───────────────────────────────────────────────────
         private void SearchBox_TextChanged(object? sender, EventArgs e)
         {
             string q = SearchBox.Text.Trim().ToLower();
+            var accDicts = AccountStorage.Load();
+
+            var accList = accDicts.Select(kvp => new AccountView
+            {
+                Type = kvp.Value.Type.ToString(),
+                Username = kvp.Value.Username,
+                Service = kvp.Key,
+                Password = kvp.Value.EncryptedPassword
+            }).ToList();
+
             if (string.IsNullOrEmpty(q))
-                BindAccounts(_allAccounts);
+            {
+                bindingSource.DataSource = new BindingList<AccountView>(accList);
+            }
             else
-                BindAccounts(_allAccounts.Where(a =>
+            {
+                var filtered = accList.Where(a =>
                     a.Username.ToLower().Contains(q) ||
                     a.Service.ToLower().Contains(q) ||
-                    a.Type.ToLower().Contains(q)));
+                    a.Type.ToLower().Contains(q)
+                ).ToList();
+
+                bindingSource.DataSource = new BindingList<AccountView>(filtered);
+            }
         }
 
         // ── Button handlers ──────────────────────────────────────────
@@ -253,14 +300,16 @@ namespace LockIn
             AddAccForm addAcc = new AddAccForm();
             addAcc.ShowDialog();
             // TODO: after AddAccForm returns, refresh _allAccounts from your data source
+            RefreshAccounts(); // This will reload accounts and re-apply any search filter
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             if (dataGridView1.Columns[e.ColumnIndex].Name == "colAction")
+
             {
-                var acc = _allAccounts[e.RowIndex];
+                var acc = (AccountView)bindingSource[e.RowIndex];
                 MessageBox.Show(
                     $"Password: {acc.Password}",
                     $"{acc.Service} — {acc.Username}",
@@ -447,6 +496,11 @@ namespace LockIn
         }
     }
 
-    // ── Data model ───────────────────────────────────────────────────
-    public record PasswordEntry(string Type, string Username, string Service, string Password);
-}
+    public class AccountView
+    {public string Type { get; set; }
+        public string Username { get; set; }
+        public string Service { get; set; }
+        public string Password { get; set; }
+    }
+        
+    }
