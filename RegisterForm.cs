@@ -1,20 +1,17 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace LockIn
+﻿namespace LockIn
 {
     public partial class RegisterForm : Form
     {
-        private readonly LogInForm _loginForm;
+        private readonly LogInForm? _loginForm;
 
-        public RegisterForm(LogInForm loginForm)
+        public RegisterForm(LogInForm? loginForm)
         {
             InitializeComponent();
             StyleButton();
+            ApplyTheme();
             _loginForm = loginForm;
         }
 
-        // ── Create Account ────────────────────────────────────────────
         private void CreateAccBtn_Click(object sender, EventArgs e)
         {
             string user = UsernameField.Text.Trim();
@@ -35,20 +32,26 @@ namespace LockIn
                 return;
             }
 
-            // TODO: hash + store master credentials
+            MasterAccount.Save(user, pass);
+            byte[] key = MasterAccount.DeriveKey(pass);
+            UtilityFunctions.Initialize(key);
             Logger.Info($"New user registered: {user}");
-            _loginForm.Show();
+
+            var dashboard = new Dashboard();
+            dashboard.FormClosed += (s, args) => Application.Exit();
+            dashboard.Show();
             this.Hide();
         }
 
-        // ── Sign In link ──────────────────────────────────────────────
         private void SignInLink_Click(object sender, EventArgs e)
         {
-            _loginForm.Show();
+            if (_loginForm != null)
+                _loginForm.Show();
+            else
+                new LogInForm().Show();
             this.Hide();
         }
 
-        // ── Pill-shaped button styling ────────────────────────────────
         private void StyleButton()
         {
             CreateAccBtn.FlatStyle = FlatStyle.Flat;
@@ -75,6 +78,28 @@ namespace LockIn
             };
         }
 
+        private void ApplyTheme()
+        {
+            BackColor = ThemeColors.BgPrimary;
+            CardPanel.BackColor = ThemeColors.BgSurface;
+            TitleLbl.ForeColor = ThemeColors.TextBright;
+            SubtitleLbl.ForeColor = ThemeColors.TextMuted;
+            UsernameLbl.ForeColor = ThemeColors.TextMuted;
+            PasswordLbl.ForeColor = ThemeColors.TextMuted;
+            ConfirmPasswordLbl.ForeColor = ThemeColors.TextMuted;
+            UsernameField.BackColor = ThemeColors.BgInputAlt;
+            UsernameField.ForeColor = ThemeColors.TextBright;
+            PasswordField.BackColor = ThemeColors.BgInputAlt;
+            PasswordField.ForeColor = ThemeColors.TextBright;
+            ConfirmPasswordField.BackColor = ThemeColors.BgInputAlt;
+            ConfirmPasswordField.ForeColor = ThemeColors.TextBright;
+            CreateAccBtn.BackColor = ThemeColors.AccentGreen;
+            AlreadyHaveLbl.ForeColor = ThemeColors.TextMuted;
+            SignInLink.LinkColor = Color.FromArgb(96, 165, 250);
+            SignInLink.ActiveLinkColor = Color.White;
+            SignInLink.VisitedLinkColor = Color.FromArgb(96, 165, 250);
+        }
+
         private static System.Drawing.Drawing2D.GraphicsPath RoundedRect(Rectangle r, int radius)
         {
             var path = new System.Drawing.Drawing2D.GraphicsPath();
@@ -87,7 +112,6 @@ namespace LockIn
             return path;
         }
 
-        // ── Stubs (wired in Designer) ─────────────────────────────────
         private void UsernameField_TextChanged(object sender, EventArgs e) { }
         private void SignInLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) { }
         private void RegisterForm_Load(object sender, EventArgs e) { }

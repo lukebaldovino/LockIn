@@ -163,6 +163,7 @@
             EditBtn.TabIndex = 2;
             EditBtn.Text = "Edit";
             EditBtn.UseVisualStyleBackColor = false;
+            EditBtn.Click += EditBtn_Click;
             // 
             // SearchPanel
             // 

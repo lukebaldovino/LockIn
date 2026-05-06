@@ -46,7 +46,7 @@ public static class UtilityFunctions
         var (cipher, iv) = AesCrypto.Encrypt(password);
         accounts[serviceKey] = new AccountEntry(username, cipher, iv, type);
         AccountStorage.Save(accounts);
-        Logger.Info($"Account created: serviceKey={serviceKey}, username={username}");
+        Logger.Info($"Account created: serviceKey={serviceKey}, username={username}, type={type}");
         return (serviceKey, username);
     }
 
@@ -178,5 +178,17 @@ public static class UtilityFunctions
     public static Dictionary<string, AccountEntry> LoadAllRaw()
     {
         return AccountStorage.Load();
+    }
+
+    public static List<(string Type, string Username, string Service, string Password)> LoadAllDecrypted()
+    {
+        var accounts = AccountStorage.Load();
+        var result = new List<(string, string, string, string)>();
+        foreach (var kvp in accounts)
+        {
+            var password = AesCrypto.Decrypt(kvp.Value.EncryptedPassword, kvp.Value.IV);
+            result.Add((kvp.Value.Type.ToString(), kvp.Value.Username, kvp.Key, password));
+        }
+        return result;
     }
 }

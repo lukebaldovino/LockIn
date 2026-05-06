@@ -99,7 +99,7 @@
             UsernameField.BorderStyle = BorderStyle.None;
             UsernameField.Font = new Font("Consolas", 10F);
             UsernameField.ForeColor = Color.FromArgb(209, 213, 219);
-            UsernameField.Location = new Point(30, 168);
+            UsernameField.Location = new Point(30, 175);
             UsernameField.Name = "UsernameField";
             UsernameField.Size = new Size(300, 20);
             UsernameField.TabIndex = 4;
@@ -111,7 +111,7 @@
             PasswordField.BorderStyle = BorderStyle.None;
             PasswordField.Font = new Font("Consolas", 10F);
             PasswordField.ForeColor = Color.FromArgb(209, 213, 219);
-            PasswordField.Location = new Point(30, 234);
+            PasswordField.Location = new Point(30, 241);
             PasswordField.Name = "PasswordField";
             PasswordField.Size = new Size(300, 20);
             PasswordField.TabIndex = 6;
@@ -123,7 +123,7 @@
             ConfirmPasswordField.BorderStyle = BorderStyle.None;
             ConfirmPasswordField.Font = new Font("Consolas", 10F);
             ConfirmPasswordField.ForeColor = Color.FromArgb(209, 213, 219);
-            ConfirmPasswordField.Location = new Point(30, 300);
+            ConfirmPasswordField.Location = new Point(30, 307);
             ConfirmPasswordField.Name = "ConfirmPasswordField";
             ConfirmPasswordField.Size = new Size(300, 20);
             ConfirmPasswordField.TabIndex = 8;
@@ -137,7 +137,7 @@
             CreateAccBtn.FlatStyle = FlatStyle.Flat;
             CreateAccBtn.Font = new Font("Consolas", 10F, FontStyle.Bold);
             CreateAccBtn.ForeColor = Color.White;
-            CreateAccBtn.Location = new Point(30, 350);
+            CreateAccBtn.Location = new Point(30, 357);
             CreateAccBtn.Name = "CreateAccBtn";
             CreateAccBtn.Size = new Size(300, 36);
             CreateAccBtn.TabIndex = 9;
@@ -149,7 +149,7 @@
             // 
             AlreadyHaveLbl.AutoSize = true;
             AlreadyHaveLbl.ForeColor = Color.FromArgb(156, 163, 175);
-            AlreadyHaveLbl.Location = new Point(62, 402);
+            AlreadyHaveLbl.Location = new Point(40, 409);
             AlreadyHaveLbl.Name = "AlreadyHaveLbl";
             AlreadyHaveLbl.Size = new Size(206, 23);
             AlreadyHaveLbl.TabIndex = 10;
@@ -160,7 +160,7 @@
             SignInLink.ActiveLinkColor = Color.White;
             SignInLink.AutoSize = true;
             SignInLink.LinkColor = Color.FromArgb(96, 165, 250);
-            SignInLink.Location = new Point(233, 402);
+            SignInLink.Location = new Point(255, 409);
             SignInLink.Name = "SignInLink";
             SignInLink.Size = new Size(63, 23);
             SignInLink.TabIndex = 11;
@@ -187,7 +187,7 @@
             CardPanel.Controls.Add(SignInLink);
             CardPanel.Location = new Point(30, 40);
             CardPanel.Name = "CardPanel";
-            CardPanel.Size = new Size(360, 432);
+            CardPanel.Size = new Size(360, 445);
             CardPanel.TabIndex = 0;
             CardPanel.Paint += CardPanel_Paint;
             // 
@@ -196,7 +196,7 @@
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 17, 23);
-            ClientSize = new Size(420, 520);
+            ClientSize = new Size(420, 530);
             Controls.Add(CardPanel);
             Font = new Font("Segoe UI", 10F);
             ForeColor = Color.White;

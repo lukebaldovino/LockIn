@@ -86,7 +86,7 @@ namespace LockIn
             UsernameField.BackColor = Color.FromArgb(50, 50, 58);
             UsernameField.BorderStyle = BorderStyle.FixedSingle;
             UsernameField.ForeColor = Color.White;
-            UsernameField.Location = new Point(30, 178);
+            UsernameField.Location = new Point(30, 185);
             UsernameField.Name = "UsernameField";
             UsernameField.Size = new Size(300, 30);
             UsernameField.TabIndex = 4;
@@ -96,7 +96,7 @@ namespace LockIn
             PasswordField.BackColor = Color.FromArgb(50, 50, 58);
             PasswordField.BorderStyle = BorderStyle.FixedSingle;
             PasswordField.ForeColor = Color.White;
-            PasswordField.Location = new Point(30, 242);
+            PasswordField.Location = new Point(30, 249);
             PasswordField.Name = "PasswordField";
             PasswordField.Size = new Size(300, 30);
             PasswordField.TabIndex = 6;
@@ -110,7 +110,7 @@ namespace LockIn
             LogInButton.FlatStyle = FlatStyle.Flat;
             LogInButton.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             LogInButton.ForeColor = Color.White;
-            LogInButton.Location = new Point(30, 292);
+            LogInButton.Location = new Point(30, 299);
             LogInButton.Name = "LogInButton";
             LogInButton.Size = new Size(300, 36);
             LogInButton.TabIndex = 7;
@@ -122,7 +122,7 @@ namespace LockIn
             // 
             NoAccountLbl.AutoSize = true;
             NoAccountLbl.ForeColor = Color.FromArgb(140, 140, 150);
-            NoAccountLbl.Location = new Point(94, 343);
+            NoAccountLbl.Location = new Point(65, 353);
             NoAccountLbl.Name = "NoAccountLbl";
             NoAccountLbl.Size = new Size(107, 23);
             NoAccountLbl.TabIndex = 8;
@@ -133,7 +133,7 @@ namespace LockIn
             RegisterLink.ActiveLinkColor = Color.White;
             RegisterLink.AutoSize = true;
             RegisterLink.LinkColor = Color.FromArgb(100, 170, 255);
-            RegisterLink.Location = new Point(176, 343);
+            RegisterLink.Location = new Point(183, 353);
             RegisterLink.Name = "RegisterLink";
             RegisterLink.Size = new Size(112, 23);
             RegisterLink.TabIndex = 9;
@@ -157,7 +157,7 @@ namespace LockIn
             CardPanel.Controls.Add(RegisterLink);
             CardPanel.Location = new Point(30, 40);
             CardPanel.Name = "CardPanel";
-            CardPanel.Size = new Size(360, 390);
+            CardPanel.Size = new Size(360, 400);
             CardPanel.TabIndex = 0;
             // 
             // LogInForm
@@ -165,7 +165,7 @@ namespace LockIn
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(22, 22, 26);
-            ClientSize = new Size(420, 480);
+            ClientSize = new Size(420, 490);
             Controls.Add(CardPanel);
             Font = new Font("Segoe UI", 10F);
             ForeColor = Color.White;

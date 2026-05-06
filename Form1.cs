@@ -5,47 +5,39 @@ namespace LockIn
     public partial class Dashboard : Form
     {
         private BindingSource bindingSource = new BindingSource();
-        // ── Color constants matching the dark theme ──────────────────
         private static readonly Color BgPrimary = Color.FromArgb(15, 17, 23);
         private static readonly Color BgSurface = Color.FromArgb(22, 25, 33);
         private static readonly Color BorderColor = Color.FromArgb(30, 33, 48);
         private static readonly Color TextMuted = Color.FromArgb(156, 163, 175);
         private static readonly Color TextBright = Color.FromArgb(209, 213, 219);
 
-        // Badge colors: (background, foreground)
         private static readonly (Color bg, Color fg) BadgePersonal = (Color.FromArgb(30, 58, 95), Color.FromArgb(96, 165, 250));
         private static readonly (Color bg, Color fg) BadgeWork = (Color.FromArgb(20, 83, 45), Color.FromArgb(74, 222, 128));
         private static readonly (Color bg, Color fg) BadgeSchool = (Color.FromArgb(69, 26, 3), Color.FromArgb(251, 146, 60));
 
-        // ── Night-mode state ─────────────────────────────────────────
-        private bool _isDayMode = false;   // starts in Night (dark) mode; button shows "Day" to switch
+        private bool _isDayMode;
 
         public Dashboard()
         {
             InitializeComponent();
             SetupColumns();
             SetupDgvPainting();
-            //LoadSampleData();
             RoundStatusDot();
             StyleButtons();
             SetupPanelBorders();
             SearchBox.TextChanged += SearchBox_TextChanged;
             dataGridView1.DataSource = bindingSource;
             LoadAccounts();
-
-            // Hide sensitive columns after data binding (when columns exist)
-            if (dataGridView1.Columns["EncryptedPassword"] != null)
-                dataGridView1.Columns["EncryptedPassword"].Visible = false;
-            if (dataGridView1.Columns["IV"] != null)
-                dataGridView1.Columns["IV"].Visible = false;
+            var colEnc = dataGridView1.Columns["EncryptedPassword"];
+            if (colEnc != null) colEnc.Visible = false;
+            var colIv = dataGridView1.Columns["IV"];
+            if (colIv != null) colIv.Visible = false;
         }
 
-        // ── Columns ──────────────────────────────────────────────────
         private void SetupColumns()
         {
             dataGridView1.Columns.Clear();
 
-            // TYPE — owner-drawn badge (uses CellPainting)
             var colType = new DataGridViewTextBoxColumn
             {
                 Name = "colType",
@@ -54,7 +46,6 @@ namespace LockIn
                 FillWeight = 14
             };
 
-            // USERNAME / EMAIL
             var colUser = new DataGridViewTextBoxColumn
             {
                 Name = "colUser",
@@ -63,7 +54,6 @@ namespace LockIn
                 FillWeight = 28
             };
 
-            // SERVICE
             var colService = new DataGridViewTextBoxColumn
             {
                 Name = "colService",
@@ -73,7 +63,6 @@ namespace LockIn
             };
             colService.DefaultCellStyle.ForeColor = TextBright;
 
-            // PASSWORD — always shows dots, owner-drawn
             var colPassword = new DataGridViewTextBoxColumn
             {
                 Name = "colPassword",
@@ -82,7 +71,6 @@ namespace LockIn
                 FillWeight = 22
             };
 
-            // ACTIONS — button column
             var colAction = new DataGridViewButtonColumn
             {
                 Name = "colAction",
@@ -100,10 +88,8 @@ namespace LockIn
             colAction.DefaultCellStyle.Padding = new Padding(2);
 
             dataGridView1.Columns.AddRange(colType, colUser, colService, colPassword, colAction);
-            // Removed hiding columns here
         }
 
-        // ── Owner-draw: badges + password dots ───────────────────────
         private void SetupDgvPainting()
         {
             dataGridView1.CellPainting += DataGridView1_CellPainting;
@@ -114,27 +100,16 @@ namespace LockIn
             if (e.RowIndex < 0) return;
 
             bool selected = (e.State & DataGridViewElementStates.Selected) != 0;
-            Color rowBg, badgeBg, badgeFg, buttonBg, buttonFg;
-
+            Color rowBg;
             if (_isDayMode)
             {
-                rowBg = Color.FromArgb(255, 255, 255); // light surface
-                badgeBg = Color.FromArgb(219, 234, 254); // light blue
-                badgeFg = Color.FromArgb(30, 64, 175);   // dark blue
-                buttonBg = Color.FromArgb(37, 99, 235);  // blue (same as dark)
-                buttonFg = Color.White;
+                rowBg = selected ? Color.FromArgb(209, 213, 219) : Color.FromArgb(255, 255, 255);
             }
             else
             {
-                rowBg = BgPrimary;
-                badgeBg = BadgeWork.bg;
-                badgeFg = BadgeWork.fg;
-                buttonBg = Color.FromArgb(37, 99, 235);
-                buttonFg = Color.White;
+                rowBg = selected ? BgSurface : BgPrimary;
             }
 
-
-            // ── Type badge ───────────────────────────────────────────
             if (e.ColumnIndex == dataGridView1.Columns["colType"]!.Index)
             {
                 e.Graphics!.FillRectangle(new SolidBrush(rowBg), e.CellBounds);
@@ -167,7 +142,6 @@ namespace LockIn
                 return;
             }
 
-            // ── Password dots ────────────────────────────────────────
             if (e.ColumnIndex == dataGridView1.Columns["colPassword"]!.Index)
             {
                 e.Graphics!.FillRectangle(new SolidBrush(rowBg), e.CellBounds);
@@ -176,7 +150,8 @@ namespace LockIn
                 int startX = e.CellBounds.X + 8;
                 int startY = e.CellBounds.Y + (e.CellBounds.Height - dotSize) / 2;
 
-                using var dotBrush = new SolidBrush(Color.FromArgb(55, 65, 81));
+                Color dotColor = _isDayMode ? Color.FromArgb(156, 163, 175) : Color.FromArgb(55, 65, 81);
+                using var dotBrush = new SolidBrush(dotColor);
                 for (int i = 0; i < dotCount; i++)
                 {
                     int dx = startX + i * (dotSize + dotGap);
@@ -188,13 +163,13 @@ namespace LockIn
                 return;
             }
 
-            // ── Action buttons (View) ────────────────────────────────
             if (e.ColumnIndex == dataGridView1.Columns["colAction"]!.Index)
             {
                 e.Graphics!.FillRectangle(new SolidBrush(rowBg), e.CellBounds);
 
                 string buttonText = "View";
-                
+                Color buttonBg = Color.FromArgb(37, 99, 235);
+                Color buttonFg = Color.White;
 
                 using var buttonBrush = new SolidBrush(buttonBg);
                 using var textBrush = new SolidBrush(buttonFg);
@@ -218,114 +193,181 @@ namespace LockIn
             }
         }
 
-        // ── Sample data ───────────────────────────────────────────────
         private void LoadAccounts()
         {
-            var accDicts = AccountStorage.Load();
-            var accList = accDicts.Select(kvp => new AccountView
+            try
             {
-                Type = kvp.Value.Type.ToString(),
-                Username = kvp.Value.Username,
-                Service = kvp.Key,
-                Password = kvp.Value.EncryptedPassword
-            }).ToList();
-            bindingSource.DataSource = new BindingList<AccountView>(accList);
-
-        }
-        /**private List<PasswordEntry> _allAccounts = new();
-
-        private void LoadSampleData()
-        {
-            _allAccounts = new List<PasswordEntry>
+                var decrypted = UtilityFunctions.LoadAllDecrypted();
+                var accList = decrypted.Select(x => new AccountView
+                {
+                    Type = x.Type,
+                    Username = x.Username,
+                    Service = x.Service,
+                    Password = x.Password
+                }).ToList();
+                bindingSource.DataSource = new BindingList<AccountView>(accList);
+            }
+            catch
             {
-                new("Personal", "luke@gmail.com",              "Gmail",            "hunter2"),
-                new("Work",     "l.baldovino@batstate.edu",     "BatStateU Portal", "p@ssword1"),
-                new("School",   "ronjae@github.com",            "GitHub",           "gh_secret"),
-                new("Personal", "ace.botones",                  "Discord",          "discordpw"),
-            };
-            BindAccounts(_allAccounts);
-        }
-
-        private void BindAccounts(IEnumerable<PasswordEntry> accounts)
-        {
-            dataGridView1.DataSource = accounts.ToList();
+                bindingSource.DataSource = new BindingList<AccountView>();
+            }
             UpdateStatus();
-        }
-        **/
-        private void RefreshAccounts()
-        {
-            LoadAccounts();
         }
 
         private void UpdateStatus()
         {
-            int count = dataGridView1.RowCount;
+            int count = bindingSource.Count;
             StatusLabel.Text = $"Ready  •  {count} account{(count == 1 ? "" : "s")} stored";
-            RefreshAccounts();
         }
 
-        // ── Search ───────────────────────────────────────────────────
         private void SearchBox_TextChanged(object? sender, EventArgs e)
         {
             string q = SearchBox.Text.Trim().ToLower();
-            var accDicts = AccountStorage.Load();
-
-            var accList = accDicts.Select(kvp => new AccountView
+            try
             {
-                Type = kvp.Value.Type.ToString(),
-                Username = kvp.Value.Username,
-                Service = kvp.Key,
-                Password = kvp.Value.EncryptedPassword
-            }).ToList();
+                var decrypted = UtilityFunctions.LoadAllDecrypted();
+                var allList = decrypted.Select(x => new AccountView
+                {
+                    Type = x.Type,
+                    Username = x.Username,
+                    Service = x.Service,
+                    Password = x.Password
+                }).ToList();
 
-            if (string.IsNullOrEmpty(q))
-            {
-                bindingSource.DataSource = new BindingList<AccountView>(accList);
+                if (string.IsNullOrEmpty(q))
+                {
+                    bindingSource.DataSource = new BindingList<AccountView>(allList);
+                }
+                else
+                {
+                    var filtered = allList.Where(a =>
+                        a.Username.ToLower().Contains(q) ||
+                        a.Service.ToLower().Contains(q) ||
+                        a.Type.ToLower().Contains(q)
+                    ).ToList();
+                    bindingSource.DataSource = new BindingList<AccountView>(filtered);
+                }
             }
-            else
+            catch
             {
-                var filtered = accList.Where(a =>
-                    a.Username.ToLower().Contains(q) ||
-                    a.Service.ToLower().Contains(q) ||
-                    a.Type.ToLower().Contains(q)
-                ).ToList();
-
-                bindingSource.DataSource = new BindingList<AccountView>(filtered);
+                bindingSource.DataSource = new BindingList<AccountView>();
             }
         }
 
-        // ── Button handlers ──────────────────────────────────────────
         private void AddButton_Click(object sender, EventArgs e)
         {
-            AddAccForm addAcc = new AddAccForm();
-            addAcc.ShowDialog();
-            // TODO: after AddAccForm returns, refresh _allAccounts from your data source
-            RefreshAccounts(); // This will reload accounts and re-apply any search filter
+            var addAcc = new AddAccForm();
+            if (addAcc.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if (Enum.TryParse<AccountType>(addAcc.AccountType, out var accType))
+                    {
+                        UtilityFunctions.CreateAccount(addAcc.Service, addAcc.Username, addAcc.Password, accType);
+                        Logger.Info($"Account added: {addAcc.Service}");
+                    }
+                    LoadAccounts();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to save account: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (bindingSource.Count == 0)
+            {
+                MessageBox.Show("No accounts to edit.", "Lock In",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (bindingSource.Current is not AccountView current) return;
+
+            var editForm = new AddAccForm();
+            editForm.AccTypeCmBx.SelectedItem = current.Type;
+            editForm.ServiceField.Text = current.Service;
+            editForm.ServiceField.Enabled = false;
+            editForm.UsernameField.Text = current.Username;
+            editForm.Text = "Lock In — Edit Account";
+            editForm.TitleLbl.Text = "Edit Account";
+
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    UtilityFunctions.UpdatePassword(editForm.Service, editForm.Password);
+                    Logger.Info($"Password updated for: {editForm.Service}");
+                    LoadAccounts();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to update account: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (bindingSource.Count == 0)
+            {
+                MessageBox.Show("No accounts to delete.", "Lock In",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (bindingSource.Current is not AccountView current) return;
+
+            var result = MessageBox.Show(
+                $"Delete the account for \"{current.Service}\" ({current.Username})?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    UtilityFunctions.DeleteAccount(current.Service);
+                    Logger.Info($"Account deleted: {current.Service}");
+                    LoadAccounts();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to delete account: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "colAction")
-
+            var col = dataGridView1.Columns[e.ColumnIndex];
+            if (col != null && col.Name == "colAction")
             {
-                var acc = (AccountView)bindingSource[e.RowIndex];
-                MessageBox.Show(
-                    $"Password: {acc.Password}",
-                    $"{acc.Service} — {acc.Username}",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.None);
+                if (bindingSource[e.RowIndex] is AccountView acc)
+                {
+                    MessageBox.Show(
+                        $"Password: {acc.Password}",
+                        $"{acc.Service} — {acc.Username}",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.None);
+                }
             }
         }
 
-        // ── Night / Day mode toggle ───────────────────────────────────
         private void NgtMdTglBtn_Click(object sender, EventArgs e)
         {
             _isDayMode = !_isDayMode;
+            ThemeColors.IsDarkMode = !_isDayMode;
 
             if (_isDayMode)
             {
-                // Switch to Day (light) mode
                 NgtMdTglBtn.Text = "Night";
 
                 Color lightBg = Color.FromArgb(245, 247, 250);
@@ -335,7 +377,7 @@ namespace LockIn
                 Color lightText = Color.FromArgb(55, 65, 81);
                 Color lightMuted = Color.FromArgb(107, 114, 128);
 
-                this.BackColor = lightBg;
+                BackColor = lightBg;
                 NavBar.BackColor = lightNav;
                 SearchPanel.BackColor = lightBg;
                 StatusPanel.BackColor = lightBg;
@@ -348,7 +390,6 @@ namespace LockIn
                 NgtMdTglBtn.BackColor = Color.FromArgb(229, 231, 235);
                 NgtMdTglBtn.ForeColor = Color.FromArgb(17, 24, 39);
 
-                // DataGridView
                 var dgvBg = new DataGridViewCellStyle(dataGridView1.DefaultCellStyle)
                 {
                     BackColor = lightSurface,
@@ -371,11 +412,9 @@ namespace LockIn
             }
             else
             {
-                // Switch back to Night (dark) mode
-
                 NgtMdTglBtn.Text = "Day";
 
-                this.BackColor = Color.FromArgb(15, 17, 23);
+                BackColor = Color.FromArgb(15, 17, 23);
                 NavBar.BackColor = Color.FromArgb(22, 25, 33);
                 SearchPanel.BackColor = Color.FromArgb(15, 17, 23);
                 StatusPanel.BackColor = Color.FromArgb(15, 17, 23);
@@ -388,7 +427,6 @@ namespace LockIn
                 NgtMdTglBtn.BackColor = Color.FromArgb(45, 50, 65);
                 NgtMdTglBtn.ForeColor = Color.FromArgb(226, 232, 240);
 
-                // DataGridView
                 var dgvBg = new DataGridViewCellStyle(dataGridView1.DefaultCellStyle)
                 {
                     BackColor = Color.FromArgb(15, 17, 23),
@@ -410,10 +448,13 @@ namespace LockIn
                 dataGridView1.ColumnHeadersDefaultCellStyle = hdrStyle;
             }
 
+            AddButton.Invalidate();
+            EditBtn.Invalidate();
+            DeleteBtn.Invalidate();
+            NavBar.Invalidate();
             dataGridView1.Invalidate();
         }
 
-        // ── Helpers ──────────────────────────────────────────────────
         private void RoundStatusDot()
         {
             StatusDot.Paint += (s, e) =>
@@ -430,28 +471,28 @@ namespace LockIn
             var buttons = new[] {
                 (AddButton, Color.FromArgb(22, 163, 74)),
                 (EditBtn,   Color.FromArgb(37, 99, 235)),
-                (DeleteBtn, Color.FromArgb(220, 38, 38)),
-                (NgtMdTglBtn, Color.FromArgb(45, 50, 65)),
+                (DeleteBtn, Color.FromArgb(220, 38, 38))
             };
 
             foreach (var (btn, color) in buttons)
             {
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 0;
+                btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
                 btn.Cursor = Cursors.Hand;
 
                 btn.Paint += (s, e) =>
                 {
                     e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    e.Graphics.Clear(btn.Parent!.BackColor);
+                    Color navBg = _isDayMode ? Color.FromArgb(255, 255, 255) : Color.FromArgb(22, 25, 33);
+                    e.Graphics.Clear(navBg);
 
                     int radius = btn.Height / 2;
                     using var path = RoundedRect(new Rectangle(0, 0, btn.Width - 1, btn.Height - 1), radius);
                     using var brush = new SolidBrush(color);
                     e.Graphics.FillPath(brush, path);
 
-
-                    // Draw text centered
                     using var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
                     e.Graphics.DrawString(btn.Text, btn.Font, new SolidBrush(Color.White),
                         new Rectangle(0, 0, btn.Width, btn.Height), sf);
@@ -489,18 +530,13 @@ namespace LockIn
         private void BrandLabel_Click(object sender, EventArgs e)
         {
         }
-
-        private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
     public class AccountView
-    {public string Type { get; set; }
-        public string Username { get; set; }
-        public string Service { get; set; }
-        public string Password { get; set; }
+    {
+        public string Type { get; set; } = "";
+        public string Username { get; set; } = "";
+        public string Service { get; set; } = "";
+        public string Password { get; set; } = "";
     }
-        
-    }
+}

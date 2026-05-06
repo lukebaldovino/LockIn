@@ -1,23 +1,20 @@
-﻿using System;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-
-namespace LockIn
+﻿namespace LockIn
 {
     public partial class AddAccForm : Form
     {
-        // Public properties so Dashboard can read the result after ShowDialog()
         public string AccountType { get; private set; } = "";
         public string Username { get; private set; } = "";
         public string Password { get; private set; } = "";
-        
         public string Service { get; private set; } = "";
+
         public AddAccForm()
         {
             InitializeComponent();
+            ApplyTheme();
+            if (AccTypeCmBx.Items.Count > 0)
+                AccTypeCmBx.SelectedIndex = 0;
         }
 
-        // ── Auto-generate password ────────────────────────────────────
         private void AutoGenBtn_Click(object sender, EventArgs e)
         {
             const int length = 16;
@@ -35,58 +32,100 @@ namespace LockIn
                 }
             }
 
-            PasswordField.UseSystemPasswordChar = false;   // show it so user can verify
+            PasswordField.UseSystemPasswordChar = false;
             PasswordField.Text = new string(res);
         }
 
-        // ── Cancel ───────────────────────────────────────────────────
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
-        // ── Confirm / Save ───────────────────────────────────────────
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            Service = ServicetxtBx.Text.Trim();
-            Username = UsernameField.Text.Trim();
-            Password = PasswordField.Text;  
-            AccountType = AccTypeCmBx.SelectedItem?.ToString() ?? "";
+            string type = AccTypeCmBx.SelectedItem?.ToString() ?? "";
+            string service = ServiceField.Text.Trim();
+            string username = UsernameField.Text.Trim();
+            string password = PasswordField.Text;
 
-            // Convert string to AccountType enum
-            if (!Enum.TryParse(AccountType, out AccountType accountType))
+            if (string.IsNullOrEmpty(service))
             {
-                MessageBox.Show("Invalid account type selected.");
+                MessageBox.Show("Please enter a service name.", "Lock In",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ServiceField.Focus();
                 return;
             }
 
-            try
+            if (string.IsNullOrEmpty(username))
             {
-                UtilityFunctions.CreateAccount(Service, Username, Password, accountType);
-                MessageBox.Show("Account added successfully!");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("Please enter a username.", "Lock In",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UsernameField.Focus();
+                return;
             }
-            catch (Exception ex)
+
+            if (string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Error adding account: " + ex.Message);
+                MessageBox.Show("Please enter a password.", "Lock In",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                PasswordField.Focus();
+                return;
             }
+
+            Service = service;
+            Username = username;
+            Password = password;
+            AccountType = type;
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
-        // ── Stubs (wired in Designer) ─────────────────────────────────
+        private void ApplyTheme()
+        {
+            BackColor = ThemeColors.BgPrimary;
+            MainPanel.BackColor = ThemeColors.BgCard;
+            TitleLbl.ForeColor = ThemeColors.TextBright;
+            SeparatorPanel.BackColor = ThemeColors.BorderColor;
+            AccTypeLbl.ForeColor = ThemeColors.TextMuted;
+            ServiceLbl.ForeColor = ThemeColors.TextMuted;
+            UsernameLbl.ForeColor = ThemeColors.TextMuted;
+            PasswordLbl.ForeColor = ThemeColors.TextMuted;
+            AutoGenLbl.ForeColor = ThemeColors.TextMuted;
+            AccTypeCmBx.BackColor = ThemeColors.BgInput;
+            AccTypeCmBx.ForeColor = ThemeColors.TextBright;
+            ServiceField.BackColor = ThemeColors.BgInput;
+            ServiceField.ForeColor = ThemeColors.TextBright;
+            UsernameField.BackColor = ThemeColors.BgInput;
+            UsernameField.ForeColor = ThemeColors.TextBright;
+            PasswordField.BackColor = ThemeColors.BgInput;
+            PasswordField.ForeColor = ThemeColors.TextBright;
+            AutoGenBtn.BackColor = ThemeColors.IsDarkMode ? Color.FromArgb(55, 55, 60) : Color.FromArgb(229, 231, 235);
+            AutoGenBtn.ForeColor = ThemeColors.IsDarkMode ? Color.FromArgb(220, 220, 220) : Color.FromArgb(55, 65, 81);
+            CancelBtn.BackColor = Color.FromArgb(55, 55, 60);
+            ConfirmBtn.BackColor = ThemeColors.AccentGreen;
+            ConfirmBtn.ForeColor = Color.White;
+        }
+
+        private void AccTypeCmBx_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+            e.DrawBackground();
+            Color bg = ThemeColors.IsDarkMode ? Color.FromArgb(50, 50, 58) : Color.FromArgb(255, 255, 255);
+            Color fg = ThemeColors.TextBright;
+            using var bgBrush = new SolidBrush(bg);
+            using var textBrush = new SolidBrush(fg);
+            e.Graphics.FillRectangle(bgBrush, e.Bounds);
+            string text = AccTypeCmBx.Items[e.Index]?.ToString() ?? "";
+            using var itemFont = new Font(e.Font ?? AccTypeCmBx.Font, FontStyle.Regular);
+            e.Graphics.DrawString(text, itemFont, textBrush, e.Bounds);
+            e.DrawFocusRectangle();
+        }
+
         private void AccTypeCmBx_SelectedIndexChanged(object sender, EventArgs e) { }
         private void UsernameField_TextChanged(object sender, EventArgs e) { }
         private void PasswordField_TextChanged(object sender, EventArgs e) { }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ServicetxtBx_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void ServiceField_TextChanged(object sender, EventArgs e) { }
     }
 }
