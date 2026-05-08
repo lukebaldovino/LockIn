@@ -127,5 +127,10 @@
         private void PasswordField_TextChanged(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
         private void ServiceField_TextChanged(object sender, EventArgs e) { }
+
+        private void AddAccForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

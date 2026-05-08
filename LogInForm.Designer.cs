@@ -15,6 +15,7 @@ namespace LockIn
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInForm));
             LockIconLbl = new Label();
             TitleLbl = new Label();
             SubtitleLbl = new Label();
@@ -170,6 +171,7 @@ namespace LockIn
             Font = new Font("Segoe UI", 10F);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "LogInForm";
             StartPosition = FormStartPosition.CenterScreen;

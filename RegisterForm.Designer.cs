@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             LockIconLbl = new Label();
             TitleLbl = new Label();
             SubtitleLbl = new Label();
@@ -198,6 +199,7 @@
             Font = new Font("Segoe UI", 10F);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "RegisterForm";
             StartPosition = FormStartPosition.CenterScreen;

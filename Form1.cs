@@ -531,6 +531,11 @@ namespace LockIn
         private void BrandLabel_Click(object sender, EventArgs e)
         {
         }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class AccountView

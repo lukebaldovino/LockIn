@@ -17,6 +17,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             NavBar = new Panel();
             BrandPanel = new Panel();
             LockIconLabel = new Label();
@@ -285,9 +286,11 @@
             Controls.Add(SearchPanel);
             Controls.Add(NavBar);
             Controls.Add(StatusPanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(800, 498);
             Name = "Dashboard";
             Text = "Lock In — Dashboard";
+            Load += Dashboard_Load;
             NavBar.ResumeLayout(false);
             BrandPanel.ResumeLayout(false);
             BrandPanel.PerformLayout();
