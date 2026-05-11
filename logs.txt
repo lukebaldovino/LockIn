@@ -53,3 +53,8 @@
 [2026-05-06 22:21:38] [INFO] New user registered: 1
 [2026-05-06 22:21:41] [INFO] Account created: serviceKey=1, username=1, type=Personal
 [2026-05-06 22:21:41] [INFO] Account added: 1
+[2026-05-11 22:29:33] [INFO] App started
+[2026-05-11 22:32:43] [INFO] App started
+[2026-05-11 22:32:49] [INFO] New user registered: Ace
+[2026-05-11 22:32:55] [INFO] Account created: serviceKey=ace, username=ace, type=Personal
+[2026-05-11 22:32:55] [INFO] Account added: ace
