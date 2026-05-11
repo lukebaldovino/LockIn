@@ -58,3 +58,7 @@
 [2026-05-11 22:32:49] [INFO] New user registered: Ace
 [2026-05-11 22:32:55] [INFO] Account created: serviceKey=ace, username=ace, type=Personal
 [2026-05-11 22:32:55] [INFO] Account added: ace
+[2026-05-11 22:34:43] [INFO] App started
+[2026-05-11 22:34:49] [INFO] New user registered: Ace
+[2026-05-11 23:21:21] [INFO] App started
+[2026-05-11 23:21:28] [INFO] User logged in: Ace
