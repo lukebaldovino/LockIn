@@ -211,9 +211,9 @@
             PassStrengthlbl.AutoSize = true;
             PassStrengthlbl.Location = new Point(201, 226);
             PassStrengthlbl.Name = "PassStrengthlbl";
-            PassStrengthlbl.Size = new Size(126, 23);
+            PassStrengthlbl.Size = new Size(150, 23);
             PassStrengthlbl.TabIndex = 14;
-            PassStrengthlbl.Text = "Weak Password";
+            PassStrengthlbl.Text = "Password Strength";
             PassStrengthlbl.Click += label1_Click_1;
             // 
             // ServiceField
