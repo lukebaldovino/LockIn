@@ -31,6 +31,7 @@
             ServiceField = new TextBox();
             ServiceLbl = new Label();
             SeparatorPanel = new Panel();
+            PassStrengthlbl = new Label();
             MainPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,7 +80,7 @@
             // 
             AutoGenLbl.AutoSize = true;
             AutoGenLbl.ForeColor = Color.FromArgb(180, 180, 185);
-            AutoGenLbl.Location = new Point(15, 228);
+            AutoGenLbl.Location = new Point(15, 271);
             AutoGenLbl.Name = "AutoGenLbl";
             AutoGenLbl.Size = new Size(122, 23);
             AutoGenLbl.TabIndex = 10;
@@ -130,7 +131,7 @@
             AutoGenBtn.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 85);
             AutoGenBtn.FlatStyle = FlatStyle.Flat;
             AutoGenBtn.ForeColor = Color.FromArgb(220, 220, 220);
-            AutoGenBtn.Location = new Point(150, 220);
+            AutoGenBtn.Location = new Point(150, 263);
             AutoGenBtn.Name = "AutoGenBtn";
             AutoGenBtn.Size = new Size(242, 38);
             AutoGenBtn.TabIndex = 11;
@@ -171,6 +172,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.FromArgb(36, 36, 40);
+            MainPanel.Controls.Add(PassStrengthlbl);
             MainPanel.Controls.Add(ServiceField);
             MainPanel.Controls.Add(ServiceLbl);
             MainPanel.Controls.Add(TitleLbl);
@@ -221,6 +223,16 @@
             SeparatorPanel.Size = new Size(392, 1);
             SeparatorPanel.TabIndex = 1;
             // 
+            // PassStrengthlbl
+            // 
+            PassStrengthlbl.AutoSize = true;
+            PassStrengthlbl.Location = new Point(201, 226);
+            PassStrengthlbl.Name = "PassStrengthlbl";
+            PassStrengthlbl.Size = new Size(126, 23);
+            PassStrengthlbl.TabIndex = 14;
+            PassStrengthlbl.Text = "Weak Password";
+            PassStrengthlbl.Click += label1_Click_1;
+            // 
             // AddAccForm
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
@@ -260,5 +272,6 @@
         private Button AutoGenBtn;
         private Button ConfirmBtn;
         private Button CancelBtn;
+        private Label PassStrengthlbl;
     }
 }

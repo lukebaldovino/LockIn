@@ -10,9 +10,15 @@
         public AddAccForm()
         {
             InitializeComponent();
+            PasswordField.TextChanged += PasswordField_TextChanged;
             ApplyTheme();
             if (AccTypeCmBx.Items.Count > 0)
                 AccTypeCmBx.SelectedIndex = 0;
+        }
+
+        private void PasswordField_TextChanged1(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void AutoGenBtn_Click(object sender, EventArgs e)
@@ -124,11 +130,42 @@
 
         private void AccTypeCmBx_SelectedIndexChanged(object sender, EventArgs e) { }
         private void UsernameField_TextChanged(object sender, EventArgs e) { }
-        private void PasswordField_TextChanged(object sender, EventArgs e) { }
+        private void PasswordField_TextChanged(object sender, EventArgs e) 
+        {
+            string password = PasswordField.Text;
+            int score = 0;
+
+            if (password.Length > 10) score++;
+            if (password.Any(char.IsDigit)) score++;
+            if (password.Any(ch => !char.IsLetterOrDigit(ch))) score++;
+
+            // determine strength
+            if (score <= 1)
+            {
+                PassStrengthlbl.Text = "Weak Password";
+                PassStrengthlbl.ForeColor = Color.Red;
+            }
+            else if (score == 2)
+            {
+                PassStrengthlbl.Text = "Moderate Password";
+                PassStrengthlbl.ForeColor = Color.Orange;
+            }
+            else
+            {
+                PassStrengthlbl.Text = "Strong Password";
+                PassStrengthlbl.ForeColor = Color.Green;
+            }
+        }
+
         private void label1_Click(object sender, EventArgs e) { }
         private void ServiceField_TextChanged(object sender, EventArgs e) { }
 
         private void AddAccForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }
