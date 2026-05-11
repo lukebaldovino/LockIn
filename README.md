@@ -61,7 +61,7 @@ LockIn is a secure password manager desktop application built with C# and Window
 
 Below is a UML class diagram representing the main classes and their relationships in LockIn. This diagram focuses on the backend logic and how the core classes interact.
 
-<img src="images/umldiagram.png" alt="UML Class Diagram" width="600"/>
+<img width="411" height="417" alt="image" src="https://github.com/user-attachments/assets/5cfd1383-6f05-45d6-9e38-002d7a0db3cf" />
 
 ## OOP Principles Applied
 - **Encapsulation:**
