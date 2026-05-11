@@ -38,7 +38,7 @@
                 }
             }
 
-            PasswordField.UseSystemPasswordChar = false;
+            PasswordField.UseSystemPasswordChar = true;
             PasswordField.Text = new string(res);
         }
 
@@ -130,7 +130,7 @@
 
         private void AccTypeCmBx_SelectedIndexChanged(object sender, EventArgs e) { }
         private void UsernameField_TextChanged(object sender, EventArgs e) { }
-        private void PasswordField_TextChanged(object sender, EventArgs e) 
+        private void PasswordField_TextChanged(object sender, EventArgs e)
         {
             string password = PasswordField.Text;
             int score = 0;
@@ -168,6 +168,20 @@
         private void label1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowTgl_Click(object sender, EventArgs e)
+        {
+            if (PasswordField.UseSystemPasswordChar)
+            {
+                PasswordField.UseSystemPasswordChar = false;
+                ShowTgl.Image = Properties.Resources.eye_opened;
+            }
+            else
+            {
+                PasswordField.UseSystemPasswordChar = true;
+                ShowTgl.Image = Properties.Resources.eye_closed;
+            }
         }
     }
 }

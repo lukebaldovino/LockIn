@@ -28,10 +28,11 @@
             ConfirmBtn = new Button();
             CancelBtn = new Button();
             MainPanel = new Panel();
+            ShowTgl = new Button();
+            PassStrengthlbl = new Label();
             ServiceField = new TextBox();
             ServiceLbl = new Label();
             SeparatorPanel = new Panel();
-            PassStrengthlbl = new Label();
             MainPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -172,6 +173,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.FromArgb(36, 36, 40);
+            MainPanel.Controls.Add(ShowTgl);
             MainPanel.Controls.Add(PassStrengthlbl);
             MainPanel.Controls.Add(ServiceField);
             MainPanel.Controls.Add(ServiceLbl);
@@ -192,6 +194,27 @@
             MainPanel.Padding = new Padding(24);
             MainPanel.Size = new Size(440, 390);
             MainPanel.TabIndex = 0;
+            // 
+            // ShowTgl
+            // 
+            ShowTgl.ForeColor = Color.Black;
+            ShowTgl.Image = Properties.Resources.eye_closed;
+            ShowTgl.Location = new Point(398, 184);
+            ShowTgl.Name = "ShowTgl";
+            ShowTgl.Size = new Size(39, 28);
+            ShowTgl.TabIndex = 15;
+            ShowTgl.UseVisualStyleBackColor = true;
+            ShowTgl.Click += ShowTgl_Click;
+            // 
+            // PassStrengthlbl
+            // 
+            PassStrengthlbl.AutoSize = true;
+            PassStrengthlbl.Location = new Point(201, 226);
+            PassStrengthlbl.Name = "PassStrengthlbl";
+            PassStrengthlbl.Size = new Size(126, 23);
+            PassStrengthlbl.TabIndex = 14;
+            PassStrengthlbl.Text = "Weak Password";
+            PassStrengthlbl.Click += label1_Click_1;
             // 
             // ServiceField
             // 
@@ -222,16 +245,6 @@
             SeparatorPanel.Name = "SeparatorPanel";
             SeparatorPanel.Size = new Size(392, 1);
             SeparatorPanel.TabIndex = 1;
-            // 
-            // PassStrengthlbl
-            // 
-            PassStrengthlbl.AutoSize = true;
-            PassStrengthlbl.Location = new Point(201, 226);
-            PassStrengthlbl.Name = "PassStrengthlbl";
-            PassStrengthlbl.Size = new Size(126, 23);
-            PassStrengthlbl.TabIndex = 14;
-            PassStrengthlbl.Text = "Weak Password";
-            PassStrengthlbl.Click += label1_Click_1;
             // 
             // AddAccForm
             // 
@@ -273,5 +286,6 @@
         private Button ConfirmBtn;
         private Button CancelBtn;
         private Label PassStrengthlbl;
+        private Button ShowTgl;
     }
 }
