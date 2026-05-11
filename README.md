@@ -56,6 +56,12 @@ LockIn is a secure password manager desktop application built with C# and Window
 - `accounts.json` — Encrypted account data (created at runtime).
 - `logs.txt` — Application logs (created at runtime).
 
+## UML Class Diagram
+
+Below is a UML class diagram representing the main classes and their relationships in LockIn. This diagram focuses on the backend logic and how the core classes interact.
+
+![UML Class Diagram](umldiagram.png)
+
 ## OOP Principles Applied
 - **Encapsulation:**
   - `AccountEntry` class encapsulates account data and provides constructors for initialization.
