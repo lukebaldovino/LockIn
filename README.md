@@ -54,7 +54,7 @@ LockIn is a secure password manager desktop application built with C# and Window
   - `logger.cs` — File-based logging utility (OOP: static utility class).
   - `test.cs` — Test utilities for backend logic.
 - `accounts.json` — Encrypted account data (created at runtime).
-- `master.json` — Stores master username and a SHA-256 derived key.
+- `master.json` — Stores master username and a SHA-256 derived key (created at runtime).
 - `logs.txt` — Application logs (created at runtime).
 
 ## UML Class Diagram
