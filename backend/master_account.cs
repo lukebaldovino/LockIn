@@ -32,10 +32,15 @@ public static class MasterAccount
         return (username, key);
     }
 
-    public static bool Verify(string password)
+    public static bool Verify(string username, string password)
     {
         if (!File.Exists(FilePath)) return false;
         var doc = JsonDocument.Parse(File.ReadAllText(FilePath));
+        string storedUsername = doc.RootElement.GetProperty("Username").GetString()!;
+        if (!string.Equals(storedUsername, username, StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
         byte[] expectedKey = DeriveKey(password);
         string expectedBase64 = Convert.ToBase64String(expectedKey);
         string storedBase64 = doc.RootElement.GetProperty("KeyBase64").GetString()!;

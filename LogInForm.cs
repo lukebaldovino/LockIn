@@ -20,7 +20,7 @@ namespace LockIn
                 return;
             }
 
-            if (!MasterAccount.Verify(pass))
+            if (!MasterAccount.Verify(user, pass))
             {
                 MessageBox.Show("Invalid username or password.", "Lock In",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
