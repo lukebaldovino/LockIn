@@ -68,6 +68,9 @@ Below is a UML class diagram representing the main classes and their relationshi
   - `AesCrypto`, `Logger`, and `AccountStorage` encapsulate related functionality as static classes.
 - **Abstraction:**
   - `UtilityFunctions` provides high-level methods for account management, hiding encryption and storage details.
+  **Inheritance**
+  - Forms are inherited for reusability
+  - 
 - **Separation of Concerns:**
   - UI logic is separated from backend logic (forms vs. backend folder).
 - **Single Responsibility Principle:**
