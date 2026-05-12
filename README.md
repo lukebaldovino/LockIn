@@ -39,28 +39,29 @@ LockIn is a secure password manager desktop application built with C# and Window
 - The app does not transmit or sync data to any server; all data is local.
 
 ## Project File Structure
-- `Program.cs` — Application entry point, handles startup and form selection.
-- `Form1.cs` / `Form1.Designer.cs` — Main dashboard UI and logic (Dashboard form).
-- `Form2.cs` / `Form2.Designer.cs` — Add account form UI and logic.
-- `LogInForm.cs` / `LogInForm.Designer.cs` — Login form UI and logic.
-- `RegisterForm.cs` / `RegisterForm.Designer.cs` — Registration form UI and logic.
-- `backend/` — Core backend logic:
-  - `account_entry.cs` — Account data model (OOP: encapsulation, constructors).
-  - `account_storage.cs` — Handles saving/loading accounts to/from JSON.
-  - `aes_crypto.cs` — AES-256 encryption/decryption utilities (OOP: static utility class).
-  - `utility_functions.cs` — High-level account management (OOP: abstraction).
-  - `master_account.cs` — Master password and key management.
-  - `logger.cs` — File-based logging utility (OOP: static utility class).
-  - `theme_colors.cs` — Centralized theme color management.
-  - `test.cs` — Test utilities for backend logic.
-- `accounts.json` — Encrypted account data (created at runtime).
-- `logs.txt` — Application logs (created at runtime).
+- `Program.cs` â€” Application entry point, handles startup and form selection.
+- `Form1.cs` / `Form1.Designer.cs` â€” Main dashboard UI and logic (Dashboard form).
+- `Form2.cs` / `Form2.Designer.cs` â€” Add account form UI and logic.
+- `LogInForm.cs` / `LogInForm.Designer.cs` â€” Login form UI and logic.
+- `RegisterForm.cs` / `RegisterForm.Designer.cs` â€” Registration form UI and logic.
+- `theme_colors.cs` â€” Centralized theme color management.
+- `backend/` â€” Core backend logic:
+  - `account_entry.cs` â€” Account data model (OOP: encapsulation, constructors).
+  - `account_storage.cs` â€” Handles saving/loading accounts to/from JSON.
+  - `aes_crypto.cs` â€” AES-256 encryption/decryption utilities (OOP: static utility class).
+  - `utility_functions.cs` â€” High-level account management (OOP: abstraction).
+  - `master_account.cs` â€” Master password and key management.
+  - `logger.cs` â€” File-based logging utility (OOP: static utility class).
+  - `test.cs` â€” Test utilities for backend logic.
+- `accounts.json` â€” Encrypted account data (created at runtime).
+- `master.json` â€” Stores master username and a SHA-256 derived key (created at runtime).
+- `logs.txt` â€” Application logs (created at runtime).
 
 ## UML Class Diagram
 
 Below is a UML class diagram representing the main classes and their relationships in LockIn. This diagram focuses on the backend logic and how the core classes interact.
 
-<img src="images/umldiagram.png" alt="UML Class Diagram" width="600"/>
+<img width="411" height="417" alt="image" src="https://github.com/user-attachments/assets/5cfd1383-6f05-45d6-9e38-002d7a0db3cf" />
 
 ## OOP Principles Applied
 - **Encapsulation:**
